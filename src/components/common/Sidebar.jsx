@@ -17,47 +17,44 @@ const Sidebar = ({ sideBarOpen }) => {
       </h2>
       <div className="flex flex-col items-center space-y-3">
         {sidebarLinks.map((item) => {
-          const isActive =
-            (pathname === "/" && !hash && item.href === "/") ||
-            (pathname === "/" && hash === item.href) ||
-            (pathname !== "/" && pathname === item.href);
+           const isActive = pathname === item.href || hash === item.href;
 
-          return item.href.startsWith("#") ? (
-            <Link
-              key={item.title}
-              to={`/${item.href}`}
-              smooth
-              className={`w-[90%] flex items-center gap-2 py-2 px-2 rounded-md ${
-                isActive ? "bg-[#EEEEEE]" : ""
-              }`}
-            >
-              <item.icon size={25} color={isActive ? "black" : "gray"} />
-              <p
-                className={`text-base font-normal hidden xl:block ${
-                  isActive ? "text-black" : "text-[#EEEEEE]"
-                }`}
-              >
-                {item.title}
-              </p>
-            </Link>
-          ) : (
-            <NavLink
-              key={item.title}
-              to={item.href}
-              className={`w-[90%] flex items-center gap-2 py-2 px-2 rounded-md ${
-                isActive ? "bg-[#EEEEEE]" : ""
-              }`}
-            >
-              <item.icon size={25} color={isActive ? "black" : "gray"} />
-              <p
-                className={`text-base font-normal hidden xl:block ${
-                  isActive ? "text-black" : "text-[#EEEEEE]"
-                }`}
-              >
-                {item.title}
-              </p>
-            </NavLink>
-          );
+           return item.href.startsWith("#") ? (
+             <Link
+               key={item.title}
+               to={`/memberService/${item.href}`}
+               smooth
+               className={`w-[90%] flex items-center gap-2 py-2 px-2 rounded-md ${
+                 isActive ? "bg-[#EEEEEE]" : ""
+               }`}
+             >
+               <item.icon size={30} color={isActive ? "black" : "gray"} />
+               <p
+                 className={`text-base font-normal hidden xl:block ${
+                   isActive ? "text-black" : "text-[#EEEEEE]"
+                 }`}
+               >
+                 {item.title}
+               </p>
+             </Link>
+           ) : (
+             <NavLink
+               key={item.title}
+               to={item.href}
+               className={`w-[90%] flex items-center gap-2 py-2 px-2 rounded-md ${
+                 isActive ? "bg-[#EEEEEE]" : ""
+               }`}
+             >
+               <item.icon size={25} color={isActive ? "black" : "gray"} />
+               <p
+                 className={`text-base font-normal hidden xl:block ${
+                   isActive ? "text-black" : "text-[#EEEEEE]"
+                 }`}
+               >
+                 {item.title}
+               </p>
+             </NavLink>
+           );
         })}
       </div>
     </div>

@@ -1,18 +1,26 @@
-import { lazy } from "react";
+import { Suspense, lazy } from "react";
 import Home from "@/pages/Home";
-import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import {
+  Navigate,
+  Route,
+  BrowserRouter as Router,
+  Routes,
+} from "react-router-dom";
 const PushNotifications = lazy(() => import("./pages/PushNotifications"));
 
 const App = () => {
   return (
     <Router>
-      <Routes>
-        <Route path="/memberService" element={<Home />} />
-        <Route
-          path="/memberService/push-notifications"
-          element={<PushNotifications />}
-        />
-      </Routes>
+      <Suspense fallback={<p>Loading...</p>}>
+        <Routes>
+          <Route path="/" element={<Navigate to="/memberService" replace />} />
+          <Route index path="/memberService" element={<Home />} />
+          <Route
+            path="/memberService/pushNotification"
+            element={<PushNotifications />}
+          />
+        </Routes>
+      </Suspense>
     </Router>
   );
 };

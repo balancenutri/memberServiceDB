@@ -10,7 +10,7 @@ export const sidebarLinks = [
   {
     icon: MdSpaceDashboard,
     title: "Dashboard",
-    href: "/",
+    href: "/memberService",
   },
   {
     icon: PiTarget,
@@ -40,6 +40,6 @@ export const sidebarLinks = [
   // {
   //   icon: MdOutlineNotificationsActive,
   //   title: "Push Notifications",
-  //   href: "/push-notifications",
+  //   href: "/memberService/pushNotification",
   // },
 ];

@@ -7,8 +7,11 @@ const App = () => {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/push-notifications" element={<PushNotifications />} />
+        <Route path="/memberService" element={<Home />} />
+        <Route
+          path="/memberService/push-notifications"
+          element={<PushNotifications />}
+        />
       </Routes>
     </Router>
   );

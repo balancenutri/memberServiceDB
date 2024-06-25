@@ -1,7 +1,11 @@
 import { CiSearch } from "react-icons/ci";
-import { MdOutlineLogout, MdChatBubbleOutline, MdCall } from "react-icons/md";
+import {
+  MdOutlineLogout,
+  MdChatBubbleOutline,
+  // MdCall,
+  // MdCallEnd,
+} from "react-icons/md";
 import { RiMenuFold2Line, RiMenuUnfold2Line } from "react-icons/ri";
-
 import Chat from "../specific/Chat";
 import {
   AlertDialog,
@@ -16,41 +20,46 @@ import {
 import { Input } from "../ui/input";
 import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
-import axios from "axios";
+// import {
+//   Dialog,
+//   DialogClose,
+//   DialogContent,
+//   DialogTrigger,
+// } from "../ui/dialog";
+// import {
+//   VonageClient,
+//   ClientConfig,
+//   ConfigRegion,
+//   LoggingLevel,
+// } from "@vonage/client-sdk";
 
 const Header = ({ setsideBarOpen, sideBarOpen }) => {
-  const makeCall = async () => {
-    const exotelSid = "balancenutrition2";
-    const apiKey = "3f3382d5c2931d582a8407b525ea9cc921734b685c8399b3";
-    const apiToken = "aafa9e676b6349c55be6bc0221a851e0aeb3c4e2573cd7e0";
+  // const makeCall = async () => {
+  //   const apiKey = "979d7e94";
+  //   const apiSecret = "gpBPh3WIjbbno5Jj";
+  //   const fromNumber = "8850701556"; // Optional: Your Vonage virtual number
+  //   const toNumber = "8850701556"; // Replace with recipient's phone number
 
-    const fromNumber = "8850701556";
-    const toNumber = "8850701556";
+  //   // Initialize Vonage Client
+  //   const clientConfig = new ClientConfig(apiKey, apiSecret);
+  //   clientConfig.region = ConfigRegion.ASIA_PACIFIC; // Set your region
+  //   clientConfig.logLevel = LoggingLevel.INFO; // Optional: Adjust logging level
 
-    const formData = new FormData();
-    formData.append("From", fromNumber);
-    formData.append("To", toNumber);
-    formData.append("CallerId", "balancenutrition2");
+  //   const vonageClient = new VonageClient(clientConfig);
+  //   console.log(vonageClient.serverCall());
+  //   try {
+  //     const call = await vonageClient.calls.create({
+  //       to: [{ type: "phone", number: toNumber }],
+  //       from: { type: "phone", number: fromNumber },
+  //       answer_url: ["https://example.com/answer"],
+  //     });
 
-    try {
-      const response = await axios.post(
-        `https://api.exotel.com/v1/Accounts/${exotelSid}/Calls/connect`,
-        formData,
-        {
-          auth: {
-            Username: apiKey,
-            Password: apiToken,
-          },
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        }
-      );
-      console.log("Call initiated successfully:", response.data);
-    } catch (error) {
-      console.error("Error initiating call:", error);
-    }
-  };
+  //     console.log("Call initiated successfully:", call);
+  //   } catch (error) {
+  //     console.error("Error initiating call:", error);
+  //   }
+  // };
+
   return (
     <div
       className={`w-full py-3 flex justify-between items-center shadow-md shadow-gray-400 bg-white z-10`}
@@ -83,11 +92,25 @@ const Header = ({ setsideBarOpen, sideBarOpen }) => {
       </div>
 
       <div className="pr-2 flex items-center gap-4">
-        <MdCall
-          size={30}
-          className="text-[#373A40] cursor-pointer"
-          onClick={makeCall}
-        />
+        {/* <Dialog>
+          <DialogTrigger asChild>
+            <MdCall
+              size={30}
+              className="text-[#373A40] cursor-pointer"
+              onClick={makeCall}
+            />
+          </DialogTrigger>
+          <DialogContent className="sm:max-w-[425px]">
+            <div className="w-[90%] flex justify-center items-center gap-3">
+              <DialogClose>
+                <MdCallEnd
+                  size={30}
+                  className="text-red-500 cursor-pointer hover:bg-gray-300 hover:text-red-700 "
+                />
+              </DialogClose>
+            </div>
+          </DialogContent>
+        </Dialog> */}
         <Popover>
           <PopoverTrigger>
             <MdChatBubbleOutline size={30} className="text-[#373A40]" />

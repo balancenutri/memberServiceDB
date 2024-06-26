@@ -3,33 +3,54 @@ import { FaWhatsapp } from "react-icons/fa6";
 
 
 export const columns = [
-  {
-    accessorKey: "index",
-    header: "Sl No.",
-    cell: ({ row }) => (
-      <div className="text-sm font-medium">{row.index + 1}</div>
-    ),
-  },
+  // {
+  //   accessorKey: "index",
+  //   header: "Sl No.",
+  //   cell: ({ row }) => (
+  //     <div className="text-sm font-medium">{row.index + 1}</div>
+  //   ),
+  // },
   {
     accessorKey: "Client Details",
     header: "Client Details",
     cell: ({ row }) => (
       <div className="w-full flex flex-col">
-        <p className="text-nowrap text-sm font-medium">
-          {row.original.clientDetails.name}
-        </p>
-        <p className="text-nowrap text-sm font-medium">
-          {row.original.clientDetails.email}
-        </p>
-        <p className="text-nowrap text-sm font-medium">
-          {row.original.clientDetails.number}
-        </p>
-        <p className="text-nowrap text-sm font-medium">
-          {row.original.clientDetails.status}
-        </p>
-        <p className="text-nowrap text-sm font-medium">
-          {row.original.clientDetails.prog_no}
-        </p>
+        <div className="w-full flex items-center gap-3">
+          <p className="text-sm font-light">Name:</p>
+          <p className="text-nowrap text-sm font-medium">
+            {row.original.clientDetails.name}
+          </p>
+        </div>
+        <div className="w-full flex items-center gap-3">
+          <p className="text-sm font-light">Email:</p>
+          <p className="text-nowrap text-sm font-medium">
+            {row.original.clientDetails.email}
+          </p>
+        </div>
+        <div className="w-full flex items-center gap-3">
+          <p className="text-sm font-light">Phone:</p>
+          <p className="text-nowrap text-sm font-medium">
+            {row.original.clientDetails.number}
+          </p>
+        </div>
+        <div className="w-full flex items-center gap-3">
+          <p className="text-sm font-light">Status :</p>
+          <p
+            className={`text-nowrap text-sm font-medium ${
+              row.original.clientDetails.status === "Active"
+                ? "text-green-600"
+                : "text-red-600"
+            }`}
+          >
+            {row.original.clientDetails.status}
+          </p>
+        </div>
+        <div className="w-full flex items-center gap-3">
+          <p className="text-sm font-light">Pg No:</p>
+          <p className="text-nowrap text-sm font-medium">
+            {row.original.clientDetails.prog_no}
+          </p>
+        </div>
       </div>
     ),
   },

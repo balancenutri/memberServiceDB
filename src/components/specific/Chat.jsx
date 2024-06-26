@@ -12,9 +12,9 @@ const Chat = () => {
       endmessage.current.scrollIntoView({ behavior: "smooth" });
     }
   }, [messageData]);
-  return ( 
-    <div className="w-full h-full bg-[#EEEEEE]  ">
-      <div className="w-full bg-[#373A40] py-1 gap-2 flex justify-start items-center">
+  return (
+    <div className="w-full h-full bg-[#F5F7FA]  ">
+      <div className="w-full bg-[#1D4ED8] py-1 gap-2 flex justify-start items-center">
         <Avatar className="ml-2">
           <AvatarImage src="https://github.com/shadcn.png" />
           <AvatarFallback>CN</AvatarFallback>

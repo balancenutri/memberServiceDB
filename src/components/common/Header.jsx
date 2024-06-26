@@ -5,6 +5,7 @@ import {
   // MdCall,
   // MdCallEnd,
 } from "react-icons/md";
+import { IoMenuSharp } from "react-icons/io5";
 import { RiMenuFold2Line, RiMenuUnfold2Line } from "react-icons/ri";
 import Chat from "../specific/Chat";
 import {
@@ -62,23 +63,14 @@ const Header = ({ setsideBarOpen, sideBarOpen }) => {
 
   return (
     <div
-      className={`w-full py-3 flex justify-between items-center shadow-md shadow-gray-400 bg-white z-10`}
+      className={`w-full py-1 flex justify-between items-center shadow-md shadow-gray-400 bg-[#F3F4F6] z-10`}
     >
       <div className="pl-2 flex items-center md:w-1/3 gap-4">
-        {sideBarOpen ? (
-          <RiMenuUnfold2Line
-            className="cursor-pointer text-[#373A40]"
-            size={35}
-            onClick={() => setsideBarOpen((prev) => !prev)}
-          />
-        ) : (
-          <RiMenuFold2Line
-            color="black"
-            cursor={"pointer"}
-            size={35}
-            onClick={() => setsideBarOpen((prev) => !prev)}
-          />
-        )}
+        <IoMenuSharp
+          className="cursor-pointer text-5xl text-[#0E0E0E] hover:bg-gray-300 hover:rounded-lg duration-300 p-2"
+          onClick={() => setsideBarOpen((prev) => !prev)}
+        />
+
         <div className="w-full relative">
           <Input
             className="border border-gray-600 px-1 py-4 focus-visible:ring-0 bg-[#EEEE] focus:bg-white duration-300"
@@ -113,9 +105,9 @@ const Header = ({ setsideBarOpen, sideBarOpen }) => {
         </Dialog> */}
         <Popover>
           <PopoverTrigger>
-            <MdChatBubbleOutline size={30} className="text-[#373A40]" />
+            <MdChatBubbleOutline size={30} className="text-[#0E0E0E]" />
           </PopoverTrigger>
-          <PopoverContent className="w-60 h-72 mr-5 flex flex-col pb-3 pt-0 px-0 rounded-md">
+          <PopoverContent className="w-80 h-72 mr-5 flex flex-col pb-3 pt-0 px-0 rounded-md">
             <Chat />
           </PopoverContent>
         </Popover>
@@ -126,12 +118,12 @@ const Header = ({ setsideBarOpen, sideBarOpen }) => {
               <AvatarFallback>CN</AvatarFallback>
             </Avatar>
           </PopoverTrigger>
-          <PopoverContent className="w-44  mr-5 flex justify-center items-start rounded-md ">
+          <PopoverContent className="w-56  mr-5 flex justify-center items-start rounded-md ">
             <AlertDialog>
               <AlertDialogTrigger className="w-full">
                 <div className="w-full flex justify-between items-center px-3 rounded-md bg-gray-300">
                   <p className="text-base font-normal py-2 ">Logout</p>
-                  <MdOutlineLogout size={22} className="" />
+                  <MdOutlineLogout size={22} className="text-[#0E0E0E]" />
                 </div>
               </AlertDialogTrigger>
               <AlertDialogContent>

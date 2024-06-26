@@ -9,7 +9,7 @@ import {
 import { tableData } from "@/constants/dummydata";
 import { columns } from "@/columns/GoalColumn";
 
-const colorClasses = ["bg-[#373A40]"];
+const colorClasses = ["bg-[#1D4ED8]"];
 const CustomCard = ({ className, item, index, bg }) => {
   const colorIndex = index % colorClasses.length;
   const colorClass = colorClasses[colorIndex];
@@ -23,7 +23,7 @@ const CustomCard = ({ className, item, index, bg }) => {
           item.description ? "-top-5" : "-top-3"
         } left-1/2 transform -translate-x-1/2  px-2 w-[75%] py-1 border border-gray-400 rounded-md`}
       >
-        <p className="text-white text-nowrap text-center font-medium">
+        <p className="text-white text-nowrap text-center font-semibold">
           {item.title}
         </p>
         {item.description && (
@@ -49,7 +49,7 @@ const CustomCard = ({ className, item, index, bg }) => {
               >
                 {key !== "Total" && (
                   <div className="">
-                    <p className="font-semibold text-sm text-gray-600">
+                    <p className="font-normal text-sm text-gray-600">
                       {key} :{" "}
                     </p>
                   </div>
@@ -58,7 +58,7 @@ const CustomCard = ({ className, item, index, bg }) => {
                   <Dialog>
                     <DialogTrigger>
                       <p
-                        className={` hover:underline font-medium text-nowrap text-right ${
+                        className={` hover:underline font-semibold text-nowrap text-right ${
                           key === "Total" ? "text-xl" : "text-base"
                         } `}
                       >

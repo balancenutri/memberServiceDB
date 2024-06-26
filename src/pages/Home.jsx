@@ -37,9 +37,9 @@ import { CircularProgress } from "@/components/ui/circularprogress";
 import { PiTarget } from "react-icons/pi";
 import { AiOutlineRise } from "react-icons/ai";
 import { FaUser } from "react-icons/fa6";
-import { FaClinicMedical } from "react-icons/fa";
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
+import { FaFemale } from "react-icons/fa";
 
 const Home = () => {
   const [showDialog, setShowDialog] = useState(false);
@@ -104,7 +104,7 @@ const Home = () => {
   return (
     <div className="w-full px-2 overflow-auto transition-transform duration-500 ease-in-out">
       <Marquee
-        className="py-2 mt-3 bg-[#373A40] text-[#EEEEEE] font-medium text-base rounded-sm"
+        className="py-2 mt-3 bg-[#1D4ED8] text-[#EEEEEE] font-semibold text-base rounded-md"
         id="top"
       >
         Lorem ipsum dolor sit amet consectetur adipisicing elit.
@@ -112,15 +112,17 @@ const Home = () => {
       <div className="space-y-4">
         <div className="w-full flex justify-center flex-col" id="team-target">
           <div className="flex items-center justify-center my-2">
-            <div className="flex items-center gap-1 px-5 py-2 rounded-md bg-white shadow-md">
-              <PiTarget size={25} />
-              <h2 className="font-medium text-xl ">Team Target</h2>
+            <div className="flex items-center gap-1 px-5 py-2 rounded-md bg-[#DCFCE7] shadow-md">
+              <PiTarget size={24} className="text-[#15803D]" />
+              <h2 className="font-medium text-lg text-[#15803D]">
+                Team Target
+              </h2>
             </div>
           </div>
-          <div className="flex items-center justify-between gap-3 flex-wrap md:flex-nowrap  px-2">
+          <div className="flex items-center justify-between gap-3 flex-wrap lg:flex-nowrap  px-2">
             {data1.map((item, index) => (
               <Card
-                className="w-full md:w-[40%]  flex flex-col items-center"
+                className="w-full lg:w-[40%]  flex flex-col items-center"
                 key={index}
               >
                 <CardContent className="w-full h-full p-1 flex justify-center items-center py-2">
@@ -141,7 +143,7 @@ const Home = () => {
                             className={`w-[100%] rounded-sm hover:bg-gray-200 duration-300 px-1 flex items-center hover:scale-105`}
                           >
                             <div className="w-1/2">
-                              <p className="font-semibold md:text-sm text-gray-600">
+                              <p className="font-normal md:text-sm text-gray-600">
                                 {key}:
                               </p>
                             </div>
@@ -150,12 +152,12 @@ const Home = () => {
                               <Dialog>
                                 <DialogTrigger>
                                   <p
-                                    className={` hover:underline font-medium text-nowrap text-right  ${
+                                    className={` hover:underline font-semibold text-nowrap text-right  ${
                                       index === 0
-                                        ? "text-orange-600"
+                                        ? "text-[#1D4ED8]"
                                         : index === 1
-                                        ? "text-green-600"
-                                        : "text-red-600"
+                                        ? "text-[#15803D]"
+                                        : "text-[#C2410C]"
                                     } `}
                                   >
                                     {value}
@@ -184,9 +186,9 @@ const Home = () => {
         <div className="border border-gray-400"></div>
         <div className="w-full  flex justify-center flex-col" id="lead-sales">
           <div className="w-full flex justify-center items-center mb-7">
-            <div className="flex items-center gap-1 px-5 py-2 rounded-md  bg-white shadow-md">
-              <AiOutlineRise size={25} />
-              <h2 className="text-center font-medium text-xl ">
+            <div className="flex items-center gap-1 px-5 py-2 rounded-md  bg-[#DBEAFE] shadow-md">
+              <AiOutlineRise size={24} className="text-[#1D4ED8]" />
+              <h2 className="text-center font-medium text-lg text-[#1D4ED8]">
                 Lead-Sales Funnel
               </h2>
             </div>
@@ -205,9 +207,9 @@ const Home = () => {
         <div className="border border-gray-400"></div>
         <div className="w-full flex justify-center flex-col" id="uncovered-ol">
           <div className="w-full flex justify-center items-center mb-7">
-            <div className="flex items-center gap-1 px-5 py-2 rounded-md bg-white shadow-md">
-              <FaUser size={23} />
-              <h2 className="text-center font-medium text-xl ">
+            <div className="flex items-center gap-1 px-5 py-2 rounded-md bg-[#FF0000]/20 shadow-md">
+              <FaUser size={24} className="text-[#FF0000]" />
+              <h2 className="text-center font-medium text-lg text-[#FF0000]">
                 Uncoverted OL
               </h2>
             </div>
@@ -229,9 +231,9 @@ const Home = () => {
           id="clinical-condition"
         >
           <div className="w-full flex justify-center items-center mb-7">
-            <div className="flex items-center gap-1 px-5 py-2 rounded-md bg-white shadow-md">
-              <FaClinicMedical size={25} />
-              <h2 className="text-center font-medium text-xl ">
+            <div className="flex items-center gap-1 px-5 py-2 rounded-md bg-[#F3E8FF] shadow-md">
+              <FaFemale size={24} className="text-[#CA8A04]" />
+              <h2 className="text-center font-medium text-lg text-[#CA8A04]">
                 Clinical Conditions
               </h2>
             </div>
@@ -250,9 +252,9 @@ const Home = () => {
         <div className="border border-gray-400"></div>
         <div className="w-full flex justify-center flex-col">
           <div className="w-full flex justify-center items-center mb-7">
-            <div className="flex items-center gap-1 px-5 py-2 rounded-md bg-white shadow-md">
-              <GiHealthNormal size={25} />
-              <h2 className="text-center font-medium text-xl ">
+            <div className="flex items-center gap-1 px-5 py-2 rounded-md bg-[#CA8A04]/30 shadow-md">
+              <GiHealthNormal size={24} className="text-[#7E22CE]" />
+              <h2 className="text-center font-medium text-lg text-[#7E22CE]">
                 Other Clinical Conditions
               </h2>
             </div>
@@ -266,8 +268,8 @@ const Home = () => {
                   </CarouselItem>
                 ))}
               </CarouselContent>
-              <CarouselPrevious className="bg-[#373A40] hover:bg-[#373A40]/90 hover:text-white text-white" />
-              <CarouselNext className="bg-[#373A40] hover:bg-[#373A40]/90 hover:text-white text-white" />
+              <CarouselPrevious className="bg-[#0E0E0E] hover:bg-[#0E0E0E]/90 hover:text-white text-white" />
+              <CarouselNext className="bg-[#0E0E0E] hover:bg-[#373A40]/90 hover:text-white text-white" />
             </Carousel>
           </div>
         </div>
@@ -304,11 +306,14 @@ const Home = () => {
           </div>
           <DialogFooter className="w-full flex justify-center md:justify-center">
             <DialogClose asChild>
-              <Button variant="ghost" onClick={handleClose}>
+              <Button
+                className="bg-gray-600 hover:bg-gray-500"
+                onClick={handleClose}
+              >
                 Close
               </Button>
             </DialogClose>
-            <Button className="bg-gray-700 hover:bg-gray-800">Okay</Button>
+            <Button className="bg-[#1D4ED8] hover:bg-[#1D4ED8]/90">Okay</Button>
           </DialogFooter>
         </DialogContent>
       </Dialog>

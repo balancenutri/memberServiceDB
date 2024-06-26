@@ -21,7 +21,7 @@ const AppLayout = (WrappedComponent) => {
     const isMobile = useIsMobile();
 
     return (
-      <div className="w-full h-screen bg-[#EEEEEE] flex overflow-hidden">
+      <div className="w-full h-screen bg-[#F5F7FA] flex overflow-hidden">
         {!isMobile ? (
           <Sidebar sideBarOpen={sideBarOpen} />
         ) : (
@@ -30,7 +30,7 @@ const AppLayout = (WrappedComponent) => {
             setsideBarOpen={setsideBarOpen}
           />
         )}
-        <div className="flex flex-col flex-grow overflow-hidden">
+        <div className="flex flex-col flex-grow overflow-hidden duration-300">
           <Header setsideBarOpen={setsideBarOpen} sideBarOpen={sideBarOpen} />
           <div className="flex-grow h-full overflow-auto">
             <WrappedComponent />

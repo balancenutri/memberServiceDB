@@ -16,12 +16,12 @@ const CustomCard = ({ className, item, index, bg }) => {
 
   return (
     <div
-      className={`shadow-md shadow-gray-600 w-full p-5 rounded-lg relative bg-white ${className} flex flex-col items-center`}
+      className={` border border-gray-300 w-full p-5 rounded-lg relative bg-white ${className} flex flex-col items-center`}
     >
       <div
         className={`${colorClass} absolute z-10  ${
           item.description ? "-top-5" : "-top-3"
-        } left-1/2 transform -translate-x-1/2  px-2 w-[75%] py-1 border border-gray-400 rounded-md`}
+        } left-1/2 transform -translate-x-1/2  px-2 w-fit py-1 border border-gray-400 rounded-md`}
       >
         <p className="text-white text-nowrap text-center font-semibold">
           {item.title}
@@ -50,7 +50,7 @@ const CustomCard = ({ className, item, index, bg }) => {
                 {key !== "Total" && (
                   <div className="">
                     <p className="font-normal text-sm text-gray-600">
-                      {key} :{" "}
+                      {key}
                     </p>
                   </div>
                 )}
@@ -58,7 +58,7 @@ const CustomCard = ({ className, item, index, bg }) => {
                   <Dialog>
                     <DialogTrigger>
                       <p
-                        className={` hover:underline font-semibold text-nowrap text-right ${
+                        className={` hover:underline font-medium text-nowrap text-right ${
                           key === "Total" ? "text-xl" : "text-base"
                         } `}
                       >

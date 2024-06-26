@@ -2,11 +2,10 @@ import { CiSearch } from "react-icons/ci";
 import {
   MdOutlineLogout,
   MdChatBubbleOutline,
-  // MdCall,
-  // MdCallEnd,
+  MdCall,
+  MdCallEnd,
 } from "react-icons/md";
 import { IoMenuSharp } from "react-icons/io5";
-import { RiMenuFold2Line, RiMenuUnfold2Line } from "react-icons/ri";
 import Chat from "../specific/Chat";
 import {
   AlertDialog,
@@ -21,46 +20,44 @@ import {
 import { Input } from "../ui/input";
 import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
+import { Device } from "@twilio/voice-sdk";
+import {
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogTrigger,
+} from "../ui/dialog";
+import axios from "axios";
+import { useEffect, useState } from "react";
+
 // import {
 //   Dialog,
 //   DialogClose,
 //   DialogContent,
 //   DialogTrigger,
 // } from "../ui/dialog";
-// import {
-//   VonageClient,
-//   ClientConfig,
-//   ConfigRegion,
-//   LoggingLevel,
-// } from "@vonage/client-sdk";
+//
 
 const Header = ({ setsideBarOpen, sideBarOpen }) => {
-  // const makeCall = async () => {
-  //   const apiKey = "979d7e94";
-  //   const apiSecret = "gpBPh3WIjbbno5Jj";
-  //   const fromNumber = "8850701556"; // Optional: Your Vonage virtual number
-  //   const toNumber = "8850701556"; // Replace with recipient's phone number
-
-  //   // Initialize Vonage Client
-  //   const clientConfig = new ClientConfig(apiKey, apiSecret);
-  //   clientConfig.region = ConfigRegion.ASIA_PACIFIC; // Set your region
-  //   clientConfig.logLevel = LoggingLevel.INFO; // Optional: Adjust logging level
-
-  //   const vonageClient = new VonageClient(clientConfig);
-  //   console.log(vonageClient.serverCall());
-  //   try {
-  //     const call = await vonageClient.calls.create({
-  //       to: [{ type: "phone", number: toNumber }],
-  //       from: { type: "phone", number: fromNumber },
-  //       answer_url: ["https://example.com/answer"],
-  //     });
-
-  //     console.log("Call initiated successfully:", call);
-  //   } catch (error) {
-  //     console.error("Error initiating call:", error);
-  //   }
-  // };
-
+  const [token, settoken] = useState("");
+  const device = new Device(token);
+  const makeCall = async () => {
+    let call = await device.connect({
+      params: {
+        To: "+918850701556",
+      },
+    });
+    console.log(call);
+  };
+  useEffect(() => {
+    const getToken = async () => {
+      const res = await axios.post(
+        `https://balancenutrition-token-generation-4131.twil.io/generate-token`
+      );
+      settoken(res.data);
+    };
+    getToken();
+  }, []);
   return (
     <div
       className={`w-full py-1 flex justify-between items-center shadow-md shadow-gray-400 bg-[#F3F4F6] z-10`}
@@ -84,7 +81,7 @@ const Header = ({ setsideBarOpen, sideBarOpen }) => {
       </div>
 
       <div className="pr-2 flex items-center gap-4">
-        {/* <Dialog>
+        <Dialog>
           <DialogTrigger asChild>
             <MdCall
               size={30}
@@ -102,7 +99,7 @@ const Header = ({ setsideBarOpen, sideBarOpen }) => {
               </DialogClose>
             </div>
           </DialogContent>
-        </Dialog> */}
+        </Dialog>
         <Popover>
           <PopoverTrigger>
             <MdChatBubbleOutline size={30} className="text-[#0E0E0E]" />

@@ -84,7 +84,7 @@ const LiveUpdates = () => {
                 {reversedIndex === latestUpdateIndex && (
                   <div className="absolute -top-1 -left-1 w-2 h-2 bg-red-500 rounded-full"></div>
                 )}
-                <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1 w-11 h-2 bg-gray-400"></div>
+
                 <CardContent className="w-full flex flex-col justify-center items-center">
                   <IoClose
                     size={15}

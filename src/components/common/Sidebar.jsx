@@ -7,7 +7,7 @@ const Sidebar = ({ sideBarOpen }) => {
   const { pathname, hash } = location;
 
   return (
-    <div
+    <aside
       className={`md:w-[6%]  xl:w-[17%] space-y-5 h-full overflow-auto hidden px-2 py-4 md:block bg-[#0e0e0e] transition-transform duration-300 ease-in-out ${
         !sideBarOpen ? "-translate-x-full fixed" : "-translate-x-0"
       }`}
@@ -59,7 +59,7 @@ const Sidebar = ({ sideBarOpen }) => {
           );
         })}
       </div>
-    </div>
+    </aside>
   );
 };
 

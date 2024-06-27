@@ -35,7 +35,7 @@ const AppLayout = (WrappedComponent) => {
           <div className="flex-grow h-full overflow-auto">
             <WrappedComponent />
           </div>
-          <div className="z-50 rounded-sm w-[30%] md:w-[15%] fixed bottom-1 right-3 flex justify-center items-center">
+          <div className="z-50 rounded-sm w-[30%] md:w-[15%] fixed bottom-1 right-4 flex justify-center items-center">
             <LiveUpdates />
           </div>
         </div>

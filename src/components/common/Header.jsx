@@ -4,7 +4,9 @@ import {
   MdChatBubbleOutline,
   MdCall,
   MdCallEnd,
+  MdAccountCircle,
 } from "react-icons/md";
+
 import { IoMenuSharp } from "react-icons/io5";
 import Chat from "../specific/Chat";
 import {
@@ -39,16 +41,16 @@ import { useEffect, useState } from "react";
 //
 
 const Header = ({ setsideBarOpen, sideBarOpen }) => {
-  const [token, settoken] = useState("");
-  const device = new Device(token);
-  const makeCall = async () => {
-    let call = await device.connect({
-      params: {
-        To: "+918850701556",
-      },
-    });
-    console.log(call);
-  };
+  // const [token, settoken] = useState("");
+  // const device = new Device(token);
+  // const makeCall = async () => {
+  //   let call = await device.connect({
+  //     params: {
+  //       To: "+918850701556",
+  //     },
+  //   });
+  //   console.log(call);
+  // };
   useEffect(() => {
     const getToken = async () => {
       const res = await axios.post(
@@ -60,7 +62,7 @@ const Header = ({ setsideBarOpen, sideBarOpen }) => {
   }, []);
   return (
     <div
-      className={`w-full py-1 flex justify-between items-center shadow-md shadow-gray-400 bg-[#F3F4F6] z-10`}
+      className={`w-full py-1 flex justify-between items-center shadow-md shadow-gray-400 bg-white z-10`}
     >
       <div className="pl-2 flex items-center md:w-1/3 gap-4">
         <IoMenuSharp
@@ -70,22 +72,22 @@ const Header = ({ setsideBarOpen, sideBarOpen }) => {
 
         <div className="w-full relative">
           <Input
-            className="border border-gray-600 px-1 py-4 focus-visible:ring-0 bg-[#EEEE] focus:bg-white duration-300"
+            className="border border-[#6C7383] px-1 py-4 focus-visible:ring-0 bg-white focus:bg-gray-200 duration-300"
             placeholder="Search Something"
           />
           <CiSearch
             size={25}
-            className="absolute right-1 top-1 text-gray-500 font-medium"
+            className="absolute right-1 top-1 text-[#6C7383] font-medium"
           />
         </div>
       </div>
 
       <div className="pr-2 flex items-center gap-4">
-        <Dialog>
+        {/* <Dialog>
           <DialogTrigger asChild>
             <MdCall
-              size={30}
-              className="text-[#373A40] cursor-pointer"
+              size={25}
+              className="text-[#6C7383] cursor-pointer"
               onClick={makeCall}
             />
           </DialogTrigger>
@@ -99,10 +101,10 @@ const Header = ({ setsideBarOpen, sideBarOpen }) => {
               </DialogClose>
             </div>
           </DialogContent>
-        </Dialog>
+        </Dialog> */}
         <Popover>
           <PopoverTrigger>
-            <MdChatBubbleOutline size={30} className="text-[#0E0E0E]" />
+            <MdChatBubbleOutline size={25} className="text-[#6C7383]" />
           </PopoverTrigger>
           <PopoverContent className="w-80 h-72 mr-5 flex flex-col pb-3 pt-0 px-0 rounded-md">
             <Chat />
@@ -110,9 +112,8 @@ const Header = ({ setsideBarOpen, sideBarOpen }) => {
         </Popover>
         <Popover>
           <PopoverTrigger>
-            <Avatar className="ml-2">
-              <AvatarImage src="https://github.com/shadcn.png" />
-              <AvatarFallback>CN</AvatarFallback>
+            <Avatar className="flex items-center justify-center">
+              <MdAccountCircle size={25} className="text-[#6C7383]"/>
             </Avatar>
           </PopoverTrigger>
           <PopoverContent className="w-56  mr-5 flex justify-center items-start rounded-md ">

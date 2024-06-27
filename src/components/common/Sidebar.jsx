@@ -8,16 +8,18 @@ const Sidebar = ({ sideBarOpen }) => {
 
   return (
     <aside
-      className={`md:w-[6%]  xl:w-[17%] space-y-5 h-full overflow-auto hidden px-2 py-4 md:block bg-[#0e0e0e] transition-transform duration-300 ease-in-out ${
-        !sideBarOpen ? "-translate-x-full fixed" : "-translate-x-0"
+      className={`h-full overflow-auto px-2 py-4 bg-[#FFFFFF] transition-all duration-300 ease-in-out space-y-4 ${
+        sideBarOpen
+          ? " md:w-[15%] lg:w-[17%]"
+          : " md:w-[6%] lg:w-[6%] xl:w-[6%]"
       }`}
     >
-      <div className="w-full border-b border-gray-400  flex items-center justify-center lg:px-2">
-        <h2 className="text-xl text-white text-left font-semibold w-[90%]  py-3">
+      <div className="w-full border-b border-gray-400 flex items-center justify-center lg:px-2">
+        <h2 className="text-xl text-[#4B49AC] text-left font-semibold w-[90%] mb-3">
           BN
         </h2>
       </div>
-      <div className="flex flex-col items-center space-y-3">
+      <div className="flex flex-col items-center space-y-3 mt-2">
         {sidebarLinks.map((item) => {
           const isActive = pathname === item.href || hash === item.href;
 
@@ -26,35 +28,51 @@ const Sidebar = ({ sideBarOpen }) => {
               key={item.title}
               to={`/memberService/${item.href}`}
               smooth
-              className={`w-[90%] flex items-center gap-2 py-2 px-2 rounded-md ${
-                isActive ? "bg-white" : ""
+              className={`w-[90%] flex ${
+                !sideBarOpen && "justify-center"
+              } items-center gap-2 py-2 px-2 rounded-md ${
+                isActive ? "bg-[#4B49AC]" : ""
               }`}
             >
-              <item.icon size={30} color={isActive ? "black" : "white"} />
-              <p
-                className={`text-sm font-normal hidden xl:block ${
-                  isActive ? "text-black" : "text-white"
-                }`}
-              >
-                {item.title}
-              </p>
+              <item.icon
+                size={25}
+                className={`${isActive ? "text-white" : "text-[#6C7383]"}`}
+              />
+
+              {sideBarOpen && (
+                <p
+                  className={`text-sm font-normal hidden md:block ${
+                    isActive ? "text-white" : "text-[#6C7383]"
+                  }`}
+                >
+                  {item.title}
+                </p>
+              )}
             </Link>
           ) : (
             <NavLink
               key={item.title}
               to={item.href}
-              className={`w-[90%] flex items-center gap-2 py-2 px-2 rounded-md ${
-                isActive ? "bg-white" : ""
+              className={`w-[90%] flex ${
+                !sideBarOpen && "justify-center"
+              } items-center gap-2 py-2 px-2 rounded-md ${
+                isActive ? "bg-[#4B49AC]" : ""
               }`}
             >
-              <item.icon size={25} color={isActive ? "black" : "white"} />
-              <p
-                className={`text-sm  font-normal hidden xl:block ${
-                  isActive ? "text-black" : "text-white"
-                }`}
-              >
-                {item.title}
-              </p>
+              <item.icon
+                size={25}
+                className={`${isActive ? "text-white" : "text-[#6C7383]"}`}
+              />
+
+              {sideBarOpen && (
+                <p
+                  className={`text-sm font-normal hidden md:block ${
+                    isActive ? "text-white" : "text-[#6C7383]"
+                  }`}
+                >
+                  {item.title}
+                </p>
+              )}
             </NavLink>
           );
         })}

@@ -1,4 +1,4 @@
-import { MdSpaceDashboard } from "react-icons/md";
+import { MdDashboard } from "react-icons/md";
 import { PiTarget } from "react-icons/pi";
 import { AiOutlineRise } from "react-icons/ai";
 import { FaClinicMedical } from "react-icons/fa";
@@ -8,7 +8,7 @@ import { MdOutlineNotificationsActive } from "react-icons/md";
 
 export const sidebarLinks = [
   {
-    icon: MdSpaceDashboard,
+    icon: MdDashboard,
     title: "Dashboard",
     href: "/memberService",
   },

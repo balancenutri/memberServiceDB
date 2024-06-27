@@ -52,13 +52,13 @@ const LiveUpdates = () => {
       className="w-full focus:ring-0 focus:outline-none"
     >
       <DrawerTrigger className="w-full">
-        <div className="bg-[#0E0E0E] py-1 w-full rounded-full flex items-center justify-center">
+        <div className="bg-[#4B49AC] py-1 w-full rounded-full flex items-center justify-center">
           <IoNotifications size={23} className="text-white" />
           <p className="text-sm text-white">({liveUpdates.length})</p>
         </div>
       </DrawerTrigger>
       <DrawerContent className="w-[75%] md:w-[20%] h-full right-3 p-0 mt-0 bg-[#EEEEEE]">
-        <DrawerHeader className="w-full bg-[#1D4ED8] rounded-t-[10px] text-white flex items-center justify-between">
+        <DrawerHeader className="w-full bg-[#4B49AC] rounded-t-[10px] text-white flex items-center justify-between">
           <DrawerTitle className="text-sm font-medium">
             Live Updates
           </DrawerTitle>
@@ -79,7 +79,6 @@ const LiveUpdates = () => {
                 key={reversedIndex}
                 className="w-[90%] pt-4 px-2 pb-2 cursor-pointer relative bg-yellow-200 border border-yellow-300 rounded-md"
                 ref={index === liveUpdates.length - 1 ? latestUpdateRef : null}
-                style={{ boxShadow: "0 7px 4px rgba(0, 0, 0, 0.3)" }} // Adding a shadow effect
               >
                 {reversedIndex === latestUpdateIndex && (
                   <div className="absolute -top-1 -left-1 w-2 h-2 bg-red-500 rounded-full"></div>

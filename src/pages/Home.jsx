@@ -1,7 +1,14 @@
+import { columns } from "@/columns/GoalColumn.jsx";
+import CustomCard from "@/components/ui/CustomCard.jsx";
 import { DataTable } from "@/components/ui/DataTable.jsx";
 import { Card, CardContent } from "@/components/ui/card";
-import { GiHealthNormal } from "react-icons/gi";
-import { MdTimer } from "react-icons/md";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel.jsx";
 import {
   Dialog,
   DialogClose,
@@ -12,7 +19,6 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog.jsx";
-import AppLayout from "@/layout/AppLayout";
 import {
   data1,
   data2,
@@ -22,25 +28,13 @@ import {
   data6,
   tableData,
 } from "@/constants/dummydata";
-import { columns } from "@/columns/GoalColumn.jsx";
-import CustomCard from "@/components/ui/CustomCard.jsx";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel.jsx";
+import AppLayout from "@/layout/AppLayout";
 import Marquee from "react-fast-marquee";
+import { MdTimer } from "react-icons/md";
 
-import { CircularProgress } from "@/components/ui/circularprogress";
-import { PiTarget } from "react-icons/pi";
-import { AiOutlineRise } from "react-icons/ai";
-import { FaUser } from "react-icons/fa6";
-import { Fragment, useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
-import { FaFemale } from "react-icons/fa";
-import { Separator } from "@/components/ui/separator";
+import { CircularProgress } from "@/components/ui/circularprogress";
+import { Fragment, useEffect, useState } from "react";
 
 const Home = () => {
   const [showDialog, setShowDialog] = useState(false);
@@ -91,12 +85,12 @@ const Home = () => {
   //     }
   //   }, 5000);
 
-  //   return () => clearInterval(interval); // Clear the interval when the component unmounts
+  //   return () => clearInterval(interval);
   // }, [showDialog]);
 
   const handleClose = () => {
     setShowDialog(false);
-    // Restart the interval
+
     setTimeout(() => {
       setShowDialog(true);
     }, 5000);
@@ -105,59 +99,52 @@ const Home = () => {
   return (
     <div className="w-full px-2 overflow-auto transition-transform duration-500 ease-in-out">
       <Marquee
-        className="py-2 mt-2 bg-[#1D4ED8] text-[#EEEEEE] font-semibold text-base rounded-md"
+        className="py-1.5 mt-2 bg-[#3E3E45] text-[#EEEEEE] font-semibold text-base rounded-md"
         id="top"
       >
         Lorem ipsum dolor sit amet consectetur adipisicing elit.
       </Marquee>
       <div className="space-y-5">
-        <div className="w-full flex justify-center flex-col" id="team-target">
-          <div className="flex items-center justify-center my-5">
-            <div className="flex items-center gap-1 px-5 py-2 rounded-md bg-[#DCFCE7] shadow-md">
-              <PiTarget size={24} className="text-[#15803D]" />
-              <h2 className="font-medium text-lg text-[#15803D]">
-                Team Target
-              </h2>
-            </div>
-          </div>
-          <div className="flex items-center justify-between gap-3 flex-wrap lg:flex-nowrap  px-2">
-            {data1.map((item, index) => (
-              <Card
-                className="w-full lg:w-[40%]  flex flex-col items-center shadow-none"
-                key={index}
-              >
-                <CardContent className="w-full h-full flex justify-center space-x-3 items-center ">
-                  <div className="w-[40%] h-[80%] flex justify-center items-center px-1 py-1 ">
-                    <CircularProgress
-                      value={calculateProgress(item)}
-                      color={"green"}
-                    />
-                  </div>
-                  <div></div>
-                  <div className="w-[50%] py-3 h-full flex flex-col items-center space-y-3">
-                    {Object.entries(item).map(
-                      ([key, value], index, array) =>
-                        key !== "title" &&
-                        key !== "description" && (
-                          <Fragment key={key}>
-                            <div
-                              className={`w-full hover:rounded-sm hover:bg-gray-200 duration-300 px-1  flex justify-between items-center hover:scale-105 rounded-none `}
-                            >
-                              <div className="">
-                                <p className="font-normal md:text-sm text-gray-600">
-                                  {key}
-                                </p>
-                              </div>
+        <div
+          className="w-full flex justify-center  flex-col px-3 py-4"
+          id="team-target"
+        >
+          <div className="bg-white border border-gray-200 px-3 py-4 rounded-lg space-y-2">
+            <h2 className="font-medium text-xl text-center text-black">
+              Team Target
+            </h2>
+            <div className="flex items-center justify-between gap-3 flex-wrap lg:flex-nowrap">
+              {data1.map((item, index) => (
+                <Card
+                  className="w-full lg:w-[40%]  flex flex-col items-center shadow-none"
+                  key={index}
+                >
+                  <CardContent className="w-full h-full flex justify-center space-x-3 items-center ">
+                    <div className="w-[40%] h-[80%] flex justify-center items-center px-1 py-1 ">
+                      <CircularProgress
+                        value={calculateProgress(item)}
+                        color={"green"}
+                      />
+                    </div>
+
+                    <div className="w-[50%] py-3 h-full flex flex-col items-center space-y-3">
+                      {Object.entries(item).map(
+                        ([key, value], index, array) =>
+                          key !== "title" &&
+                          key !== "description" && (
+                            <Fragment key={key}>
+                              <div
+                                className={`w-full hover:rounded-sm hover:bg-gray-200 duration-300 px-1  flex justify-between items-center hover:scale-105 rounded-none `}
+                              >
+                                <div className="">
+                                  <p className="font-normal md:text-sm text-[#6C7383]">
+                                    {key}
+                                  </p>
+                                </div>
                                 <Dialog>
                                   <DialogTrigger>
                                     <p
-                                      className={`hover:underline font-medium text-nowrap text-right ${
-                                        index === 0
-                                          ? "text-[#1D4ED8]"
-                                          : index === 1
-                                          ? "text-[#15803D]"
-                                          : "text-[#C2410C]"
-                                      }`}
+                                      className={`hover:underline font-medium text-nowrap text-right text-black`}
                                     >
                                       {value}
                                     </p>
@@ -170,124 +157,125 @@ const Home = () => {
                                       />
                                     </div>
                                   </DialogContent>
-                                </Dialog>          
-                            </div>
-                            {index !== array.length - 1 && (
-                              <div className="w-full border-b border-gray-400"></div>
-                            )}
-                          </Fragment>
-                        )
-                    )}
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-        <div className="border border-gray-400"></div>
-        <div className="w-full  flex justify-center flex-col" id="lead-sales">
-          <div className="w-full flex justify-center items-center mb-7">
-            <div className="flex items-center gap-1 px-5 py-2 rounded-md  bg-[#DBEAFE] shadow-md">
-              <AiOutlineRise size={24} className="text-[#1D4ED8]" />
-              <h2 className="text-center font-medium text-lg text-[#1D4ED8]">
-                Lead-Sales Funnel
-              </h2>
+                                </Dialog>
+                              </div>
+                              {index !== array.length - 1 && (
+                                <div className="w-full border-b border-gray-300"></div>
+                              )}
+                            </Fragment>
+                          )
+                      )}
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
             </div>
-          </div>
-          <div className="flex items-center justify-between md:gap-20 gap-7 flex-wrap md:flex-nowrap px-2">
-            {data2.map((item, index) => (
-              <CustomCard
-                item={item}
-                key={index}
-                className={`h-36`}
-                index={index}
-              />
-            ))}
-          </div>
-        </div>
-        <div className="border border-gray-400"></div>
-        <div className="w-full flex justify-center flex-col" id="uncovered-ol">
-          <div className="w-full flex justify-center items-center mb-7">
-            <div className="flex items-center gap-1 px-5 py-2 rounded-md bg-[#D04848]/20 shadow-md">
-              <FaUser size={24} className="text-[#D04848]" />
-              <h2 className="text-center font-medium text-lg text-[#D04848]">
-                Uncoverted OL
-              </h2>
-            </div>
-          </div>
-          <div className="flex items-center justify-between md:gap-3 gap-7 flex-wrap md:flex-nowrap px-2">
-            {data3.map((item, index) => (
-              <CustomCard
-                item={item}
-                key={index}
-                className={"h-44"}
-                index={index}
-              />
-            ))}
           </div>
         </div>
         <div className="border border-gray-400"></div>
         <div
-          className="w-full flex justify-center flex-col"
+          className="w-full flex justify-center flex-col px-3 py-4"
+          id="lead-sales"
+        >
+          <div className="bg-white border border-gray-200 px-3 py-4 rounded-lg space-y-5">
+            <h2 className="font-medium text-xl text-black text-center">
+              Lead-Sales Funnel
+            </h2>
+            <div className="flex items-center justify-between md:gap-20 gap-7 flex-wrap md:flex-nowrap">
+              {data2.map((item, index) => (
+                <CustomCard
+                  item={item}
+                  key={index}
+                  className={`h-52`}
+                  index={index}
+                  bg={"bg-[#5EB462]"}
+                />
+              ))}
+            </div>
+          </div>
+        </div>
+        <div className="border border-gray-400"></div>
+        <div
+          className="w-full flex justify-center flex-col px-3 py-4"
+          id="uncovered-ol"
+        >
+          <div className="bg-white border border-gray-200 px-3 py-4 rounded-lg space-y-5">
+            <h2 className="font-medium text-xl text-black text-center">
+              Uncoverted OL
+            </h2>
+            <div className="flex items-center justify-between md:gap-3 gap-7 flex-wrap md:flex-nowrap">
+              {data3.map((item, index) => (
+                <CustomCard
+                  item={item}
+                  key={index}
+                  className={"h-64"}
+                  index={index}
+                  bg={"bg-[#FD9913]"}
+                />
+              ))}
+            </div>
+          </div>
+        </div>
+        <div className="border border-gray-400"></div>
+        <div
+          className="w-full flex justify-center flex-col px-3 py-4"
           id="clinical-condition"
         >
-          <div className="w-full flex justify-center items-center mb-7">
-            <div className="flex items-center gap-1 px-5 py-2 rounded-md bg-[#F3E8FF] shadow-md">
-              <FaFemale size={24} className="text-[#CA8A04]" />
-              <h2 className="text-center font-medium text-lg text-[#CA8A04]">
-                Clinical Conditions
-              </h2>
+          <div className="bg-white border border-gray-200 px-3 py-4 rounded-lg space-y-7">
+            <h2 className="font-medium text-xl text-black text-center">
+              Clinical Conditions
+            </h2>
+            <div className="mt-7 flex items-center justify-between md:gap-20 gap-7 flex-wrap md:flex-nowrap">
+              {data4.map((item, index) => (
+                <CustomCard
+                  item={item}
+                  index={index}
+                  key={index}
+                  className={"h-28"}
+                  style={{
+                    backgroundImage: "linear-gradient(60deg, #66bb6a, #43a047)",
+                  }}
+                />
+              ))}
             </div>
-          </div>
-          <div className="flex items-center justify-between md:gap-20 gap-7 flex-wrap md:flex-nowrap px-2">
-            {data4.map((item, index) => (
-              <CustomCard
-                item={item}
-                index={index}
-                key={index}
-                className={"h-24"}
-              />
-            ))}
-          </div>
-        </div>
-        <div className="border border-gray-400"></div>
-        <div className="w-full flex justify-center flex-col">
-          <div className="w-full flex justify-center items-center mb-7">
-            <div className="flex items-center gap-1 px-5 py-2 rounded-md bg-[#CA8A04]/30 shadow-md">
-              <GiHealthNormal size={24} className="text-[#7E22CE]" />
-              <h2 className="text-center font-medium text-lg text-[#7E22CE]">
-                Other Clinical Conditions
-              </h2>
+            <h2 className="font-medium text-xl text-black text-center">
+              Other Clinical Conditions
+            </h2>
+            <div className="flex px-10 w-full items-center justify-center md:gap-20 gap-7 flex-wrap md:flex-nowrap">
+              <Carousel className="w-full">
+                <CarouselContent className="py-3">
+                  {data5.map((item, index) => (
+                    <CarouselItem className="md:basis-1/3 " key={index}>
+                      <CustomCard
+                        item={item}
+                        index={index}
+                        className={"h-28"}
+                      />
+                    </CarouselItem>
+                  ))}
+                </CarouselContent>
+                <CarouselPrevious className="bg-[#4B49AC] hover:bg-[#4B49AC]/90 hover:text-white text-white" />
+                <CarouselNext className="bg-[#4B49AC] hover:bg-[#4B49AC]/90 hover:text-white text-white" />
+              </Carousel>
             </div>
-          </div>
-          <div className="flex px-12 w-full items-center justify-center md:gap-20 gap-7 flex-wrap md:flex-nowrap">
-            <Carousel className="w-full">
-              <CarouselContent className="py-3">
-                {data5.map((item, index) => (
-                  <CarouselItem className="md:basis-1/3 " key={index}>
-                    <CustomCard item={item} index={index} className={"h-24"} />
-                  </CarouselItem>
-                ))}
-              </CarouselContent>
-              <CarouselPrevious className="bg-[#0E0E0E] hover:bg-[#0E0E0E]/90 hover:text-white text-white" />
-              <CarouselNext className="bg-[#0E0E0E] hover:bg-[#373A40]/90 hover:text-white text-white" />
-            </Carousel>
           </div>
         </div>
         <div className="border border-gray-400"></div>
         <div
-          className="w-full flex justify-center flex-col py-5"
+          className="w-full flex justify-center flex-col px-3 py-4"
           id="bottom-page"
         >
-          <div className="flex items-center justify-between md:gap-20 gap-7 flex-wrap md:flex-nowrap px-2">
-            {data6.map((item, index) => (
-              <CustomCard
-                item={item}
-                key={index}
-                className={"h-24"}
-                index={index}
-              />
-            ))}
+          <div className="bg-white border border-gray-200 px-3 py-4 rounded-lg space-y-7">
+            <div className="flex items-center justify-between md:gap-20 gap-7 flex-wrap md:flex-nowrap">
+              {data6.map((item, index) => (
+                <CustomCard
+                  item={item}
+                  key={index}
+                  className={"h-28"}
+                  index={index}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </div>

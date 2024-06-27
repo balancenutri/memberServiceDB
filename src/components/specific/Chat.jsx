@@ -14,7 +14,7 @@ const Chat = () => {
   }, [messageData]);
   return (
     <div className="w-full h-full bg-[#F5F7FA]  ">
-      <div className="w-full bg-[#1D4ED8] py-1 gap-2 flex justify-start items-center">
+      <div className="w-full bg-[#4B49AC] py-1 gap-2 flex justify-start items-center">
         <Avatar className="ml-2">
           <AvatarImage src="https://github.com/shadcn.png" />
           <AvatarFallback>CN</AvatarFallback>

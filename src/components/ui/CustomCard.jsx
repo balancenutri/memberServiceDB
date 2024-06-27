@@ -9,14 +9,14 @@ import {
 import { tableData } from "@/constants/dummydata";
 import { columns } from "@/columns/GoalColumn";
 
-const colorClasses = ["bg-[#1D4ED8]"];
+const colorClasses = ["bg-[#54B435]"];
 const CustomCard = ({ className, item, index, bg }) => {
   const colorIndex = index % colorClasses.length;
   const colorClass = colorClasses[colorIndex];
 
   return (
     <div
-      className={` border border-gray-300 w-full p-5 rounded-lg relative bg-white ${className} flex flex-col items-center`}
+      className={` border border-gray-300 w-full rounded-lg relative bg-white ${className} flex flex-col items-center px-2`}
     >
       <div
         className={`${colorClass} absolute z-10  ${
@@ -33,25 +33,27 @@ const CustomCard = ({ className, item, index, bg }) => {
         )}
       </div>
       <div
-        className={`mt-3 space-y-1 w-full h-full flex flex-col ${
+        className={`mt-7 space-y-1  w-full h-full flex flex-col ${
           item.Total ? "justify-center" : "justify-start"
         } items-center`}
       >
-        {Object.entries(item).map(([key, value], index) => {
+        {Object.entries(item).map(([key, value], index, array) => {
           return (
             key !== "title" &&
             key !== "description" && (
               <div
                 key={key}
-                className={`lg:w-[80%] md:w-[95%] w-[60%]  hover:bg-gray-200 hover:scale-105 duration-300 rounded-sm px-1 flex ${
-                  key === "Total" ? "justify-center" : " justify-between"
+                className={`w-full py-2 px-1 hover:bg-gray-200 hover:scale-105 duration-300 rounded-sm  flex ${
+                  key === "Total"
+                    ? "justify-center"
+                    : ` justify-between ${
+                        index !== array.length - 1 && "border-b border-gray-300"
+                      } `
                 }`}
               >
                 {key !== "Total" && (
                   <div className="">
-                    <p className="font-normal text-sm text-gray-600">
-                      {key}
-                    </p>
+                    <p className="font-normal text-sm text-[#6C7383]">{key}</p>
                   </div>
                 )}
                 <div className="">
@@ -59,7 +61,7 @@ const CustomCard = ({ className, item, index, bg }) => {
                     <DialogTrigger>
                       <p
                         className={` hover:underline font-medium text-nowrap text-right ${
-                          key === "Total" ? "text-xl" : "text-base"
+                          key === "Total" ? "text-2xl" : "text-base"
                         } `}
                       >
                         {value}

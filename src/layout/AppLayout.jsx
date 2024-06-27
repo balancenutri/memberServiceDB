@@ -17,11 +17,11 @@ import { useEffect, useState } from "react";
 
 const AppLayout = (WrappedComponent) => {
   return () => {
-    const [sideBarOpen, setsideBarOpen] = useState(true);
+    const [sideBarOpen, setsideBarOpen] = useState(false);
     const isMobile = useIsMobile();
 
     return (
-      <div className="w-full h-screen bg-[#F5F7FA] flex overflow-hidden">
+      <div className="w-full h-screen bg-[#F5F7FF] flex overflow-hidden">
         {!isMobile ? (
           <Sidebar sideBarOpen={sideBarOpen} />
         ) : (

@@ -76,7 +76,7 @@ export const data4 = [
 
   {
     title: "Hormonal Disorder",
-    "OLR ": "325 | 7130",
+    OLR: "325 | 7130",
     OCL: "189 | 6505",
   },
 ];
@@ -88,25 +88,25 @@ export const data5 = [
   },
   {
     title: "Thyroid",
-    OLR: "102 |8920",
+    OLR: "102 | 8920",
     OCL: "111 | 7850",
   },
   ,
   {
     title: "Cholestrol",
-    OLR: "89 |5121",
+    OLR: "89 | 5121",
     OCL: "85 | 3528",
   },
   ,
   {
     title: "Fatty Liver",
-    OLR: "111 |3258",
+    OLR: "111 | 3258",
     OCL: "85 | 3150",
   },
   ,
   {
     title: "Uric Acid",
-    OLR: "85 |3122",
+    OLR: "85 | 3122",
     OCL: "98 | 882",
   },
   ,
@@ -119,13 +119,13 @@ export const data6 = [
   },
   {
     title: "Hot to Cold",
-    OLR: "102 |3150",
+    OLR: "102 | 3150",
     OCL: "103 | 1879",
   },
   ,
   {
     title: "Warm to Cold",
-    OLR: "72|5121",
+    OLR: "72 | 5121",
     OCL: "108 | 7105",
   },
 ];

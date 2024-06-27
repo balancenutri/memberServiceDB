@@ -5,7 +5,7 @@ import {
   MdCallEnd,
   MdAccountCircle,
 } from "react-icons/md";
-import { BiMessageDots } from "react-icons/bi";
+import { IoChatboxEllipsesOutline } from "react-icons/io5";
 
 import { IoMenuSharp } from "react-icons/io5";
 import Chat from "../specific/Chat";
@@ -40,7 +40,7 @@ import { useEffect, useState } from "react";
 // } from "../ui/dialog";
 //
 
-const Header = ({ setsideBarOpen, sideBarOpen }) => {
+const Header = ({ setsideBarOpen }) => {
   // const [token, settoken] = useState("");
   // const device = new Device(token);
   // const makeCall = async () => {
@@ -62,7 +62,7 @@ const Header = ({ setsideBarOpen, sideBarOpen }) => {
   }, []);
   return (
     <div
-      className={`w-full py-1 flex justify-between items-center shadow-md shadow-gray-400 bg-white z-10`}
+      className={`w-full bg-[#F5F7FF] py-1 flex justify-between items-center z-10`}
     >
       <div className="pl-2 flex items-center md:w-1/3 gap-4">
         <IoMenuSharp
@@ -72,7 +72,7 @@ const Header = ({ setsideBarOpen, sideBarOpen }) => {
 
         <div className="w-full relative">
           <Input
-            className="border border-[#6C7383] px-1 py-4 focus-visible:ring-0 bg-white focus:bg-gray-200 duration-300"
+            className="border border-[#6C7383] px-1 py-4 focus-visible:ring-0 bg-[#F5F7FF] focus:bg-white duration-300"
             placeholder="Search Something"
           />
           <CiSearch
@@ -104,7 +104,7 @@ const Header = ({ setsideBarOpen, sideBarOpen }) => {
         </Dialog> */}
         <Popover>
           <PopoverTrigger>
-            <BiMessageDots size={25} className="text-[#6C7383]" />
+            <IoChatboxEllipsesOutline size={25} className="text-[#6C7383]" />
           </PopoverTrigger>
           <PopoverContent className="w-80 h-72 mr-5 flex flex-col pb-3 pt-0 px-0 rounded-md">
             <Chat />

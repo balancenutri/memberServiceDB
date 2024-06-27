@@ -14,9 +14,9 @@ const Sidebar = ({ sideBarOpen }) => {
           : " md:w-[6%] lg:w-[6%] xl:w-[6%]"
       }`}
     >
-      <div className="w-full border-b border-gray-400 flex items-center justify-center lg:px-2">
+      <div className="w-full flex items-center justify-center lg:px-2">
         <h2 className="text-xl text-[#4B49AC] text-left font-semibold w-[90%] mb-3">
-          BN
+          {sideBarOpen ? "Balance Nutrition" : "BN"}
         </h2>
       </div>
       <div className="flex flex-col items-center space-y-3 mt-2">

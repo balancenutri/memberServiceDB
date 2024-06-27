@@ -9,25 +9,25 @@ import {
 import { tableData } from "@/constants/dummydata";
 import { columns } from "@/columns/GoalColumn";
 
-const colorClasses = ["bg-[#379777]"];
+const colorClasses = ["bg-[#4B49AC]"];
 const CustomCard = ({ className, item, index, bg }) => {
   const colorIndex = index % colorClasses.length;
   const colorClass = colorClasses[colorIndex];
 
   return (
     <div
-      className={` border border-gray-300 w-full rounded-lg relative bg-white ${className} flex flex-col items-center px-2`}
+      className={`border border-gray-300 w-full rounded-lg relative bg-white ${className} flex flex-col items-center px-2`}
     >
       <div
         className={`${colorClass} absolute z-10  ${
           item.description ? "-top-5" : "-top-3"
         } left-1/2 transform -translate-x-1/2  px-2 w-fit py-1 border border-gray-400 rounded-md`}
       >
-        <p className="text-white text-nowrap text-center font-semibold">
+        <p className="text-white text-nowrap text-center font-normal">
           {item.title}
         </p>
         {item.description && (
-          <h2 className="text-center font-normal text-nowrap text-xs text-white">
+          <h2 className="text-center font-normal text-nowrap text-xs leading-none text-white">
             {item.description}
           </h2>
         )}

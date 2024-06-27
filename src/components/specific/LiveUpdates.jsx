@@ -52,13 +52,13 @@ const LiveUpdates = () => {
       className="w-full focus:ring-0 focus:outline-none"
     >
       <DrawerTrigger className="w-full">
-        <div className="bg-[#4B49AC] py-1 w-full rounded-full flex items-center justify-center">
+        <div className="bg-[#379777] py-1 w-full rounded-full flex items-center justify-center">
           <IoNotifications size={23} className="text-white" />
           <p className="text-sm text-white">({liveUpdates.length})</p>
         </div>
       </DrawerTrigger>
       <DrawerContent className="w-[75%] md:w-[20%] h-full right-3 p-0 mt-0 bg-[#EEEEEE]">
-        <DrawerHeader className="w-full bg-[#4B49AC] rounded-t-[10px] text-white flex items-center justify-between">
+        <DrawerHeader className="w-full bg-[#379777] rounded-t-[10px] text-white flex items-center justify-between">
           <DrawerTitle className="text-sm font-medium">
             Live Updates
           </DrawerTitle>

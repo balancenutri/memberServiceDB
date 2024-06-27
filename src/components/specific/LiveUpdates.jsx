@@ -77,7 +77,7 @@ const LiveUpdates = () => {
             return (
               <Card
                 key={reversedIndex}
-                className="w-[90%] pt-4 px-2 pb-2 cursor-pointer relative bg-yellow-200 border border-yellow-300 rounded-md"
+                className="w-[90%] pt-4 px-2 pb-2 cursor-pointer relative bg-yellow-200 border border-yellow-300 rounded-md shadow-sm"
                 ref={index === liveUpdates.length - 1 ? latestUpdateRef : null}
               >
                 {reversedIndex === latestUpdateIndex && (

@@ -99,7 +99,8 @@ const Home = () => {
   return (
     <div className="w-full px-2 overflow-auto transition-transform duration-500 ease-in-out">
       <Marquee
-        className="py-1.5 mt-2 bg-[#3E3E45] text-[#EEEEEE] font-semibold text-base rounded-md"
+        pauseOnHover={true}
+        className="py-1.5 mt-2 bg-[#379777]/95 text-white font-semibold text-base rounded-md"
         id="top"
       >
         Lorem ipsum dolor sit amet consectetur adipisicing elit.
@@ -123,7 +124,7 @@ const Home = () => {
                     <div className="w-[40%] h-[80%] flex justify-center items-center px-1 py-1 ">
                       <CircularProgress
                         value={calculateProgress(item)}
-                        color={"green"}
+                        color={"#379777"}
                       />
                     </div>
 
@@ -188,7 +189,7 @@ const Home = () => {
                   key={index}
                   className={`h-52`}
                   index={index}
-                  bg={"bg-[#5EB462]"}
+                  bg={`gradientgreen`}
                 />
               ))}
             </div>
@@ -210,7 +211,7 @@ const Home = () => {
                   key={index}
                   className={"h-64"}
                   index={index}
-                  bg={"bg-[#FD9913]"}
+                  // bg={"bg-[#FD9913]"}
                 />
               ))}
             </div>
@@ -232,16 +233,13 @@ const Home = () => {
                   index={index}
                   key={index}
                   className={"h-28"}
-                  style={{
-                    backgroundImage: "linear-gradient(60deg, #66bb6a, #43a047)",
-                  }}
                 />
               ))}
             </div>
             <h2 className="font-medium text-xl text-black text-center">
               Other Clinical Conditions
             </h2>
-            <div className="flex px-10 w-full items-center justify-center md:gap-20 gap-7 flex-wrap md:flex-nowrap">
+            <div className="flex px-12 w-full items-center justify-center md:gap-20 gap-7 flex-wrap md:flex-nowrap">
               <Carousel className="w-full">
                 <CarouselContent className="py-3">
                   {data5.map((item, index) => (
@@ -249,7 +247,7 @@ const Home = () => {
                       <CustomCard
                         item={item}
                         index={index}
-                        className={"h-28"}
+                        className={"h-32"}
                       />
                     </CarouselItem>
                   ))}

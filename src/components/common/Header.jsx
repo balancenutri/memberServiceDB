@@ -1,11 +1,11 @@
 import { CiSearch } from "react-icons/ci";
 import {
   MdOutlineLogout,
-  MdChatBubbleOutline,
   MdCall,
   MdCallEnd,
   MdAccountCircle,
 } from "react-icons/md";
+import { BiMessageDots } from "react-icons/bi";
 
 import { IoMenuSharp } from "react-icons/io5";
 import Chat from "../specific/Chat";
@@ -104,7 +104,7 @@ const Header = ({ setsideBarOpen, sideBarOpen }) => {
         </Dialog> */}
         <Popover>
           <PopoverTrigger>
-            <MdChatBubbleOutline size={25} className="text-[#6C7383]" />
+            <BiMessageDots size={25} className="text-[#6C7383]" />
           </PopoverTrigger>
           <PopoverContent className="w-80 h-72 mr-5 flex flex-col pb-3 pt-0 px-0 rounded-md">
             <Chat />
@@ -113,7 +113,7 @@ const Header = ({ setsideBarOpen, sideBarOpen }) => {
         <Popover>
           <PopoverTrigger>
             <Avatar className="flex items-center justify-center">
-              <MdAccountCircle size={25} className="text-[#6C7383]"/>
+              <MdAccountCircle size={25} className="text-[#6C7383]" />
             </Avatar>
           </PopoverTrigger>
           <PopoverContent className="w-56  mr-5 flex justify-center items-start rounded-md ">

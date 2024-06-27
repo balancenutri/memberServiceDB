@@ -9,7 +9,7 @@ import {
 import { tableData } from "@/constants/dummydata";
 import { columns } from "@/columns/GoalColumn";
 
-const colorClasses = ["bg-[#54B435]"];
+const colorClasses = ["bg-[#379777]"];
 const CustomCard = ({ className, item, index, bg }) => {
   const colorIndex = index % colorClasses.length;
   const colorClass = colorClasses[colorIndex];

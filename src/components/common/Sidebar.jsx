@@ -35,7 +35,7 @@ const Sidebar = ({ sideBarOpen }) => {
               }`}
             >
               <item.icon
-                size={25}
+                size={23}
                 className={`${isActive ? "text-white" : "text-[#6C7383]"}`}
               />
 
@@ -60,7 +60,7 @@ const Sidebar = ({ sideBarOpen }) => {
               }`}
             >
               <item.icon
-                size={25}
+                size={23}
                 className={`${isActive ? "text-white" : "text-[#6C7383]"}`}
               />
 

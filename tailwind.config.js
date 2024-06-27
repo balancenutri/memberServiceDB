@@ -18,9 +18,10 @@ module.exports = {
     },
     extend: {
       fontFamily: {
-        "roboto": ["Roboto Condensed", "sans-serif"],
+        roboto: ["Roboto Condensed", "sans-serif"],
       },
       colors: {
+        gradientgreen: "linear-gradient(60deg, #66bb6a, #43a047)",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",

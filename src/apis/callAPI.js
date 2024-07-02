@@ -8,3 +8,11 @@ export const getToken = async () => {
   const data = res.data;
   return data;
 };
+
+export const getCallStatusAPI = async (callSid) => {
+  const res = await axios.post(`${SERVER_URL}/call-status`, {
+    callSid,
+  });
+  const data = res.data;
+  return data;
+};

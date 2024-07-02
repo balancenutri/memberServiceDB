@@ -8,7 +8,7 @@ const Sidebar = ({ sideBarOpen }) => {
 
   return (
     <aside
-      className={`h-full overflow-auto px-2 py-4 bg-[#FFFFFF] transition-all duration-300 ease-in-out space-y-4 ${
+      className={`md:block hidden h-full overflow-auto px-2 py-4 bg-[#FFFFFF] transition-all duration-300 ease-in-out space-y-4 ${
         sideBarOpen
           ? " md:w-[15%] lg:w-[17%]"
           : " md:w-[6%] lg:w-[6%] xl:w-[6%]"

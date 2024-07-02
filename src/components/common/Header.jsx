@@ -1,13 +1,6 @@
 import { CiSearch } from "react-icons/ci";
-import {
-  MdOutlineLogout,
-  MdCall,
-  MdCallEnd,
-  MdAccountCircle,
-} from "react-icons/md";
-import { IoChatboxEllipsesOutline } from "react-icons/io5";
-
-import { IoMenuSharp } from "react-icons/io5";
+import { IoChatboxEllipsesOutline, IoMenuSharp } from "react-icons/io5";
+import { MdAccountCircle, MdCall, MdOutlineLogout } from "react-icons/md";
 import Chat from "../specific/Chat";
 import {
   AlertDialog,
@@ -19,47 +12,32 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "../ui/alert-dialog";
+import { Avatar } from "../ui/avatar";
 import { Input } from "../ui/input";
 import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
-import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
-import { Device } from "@twilio/voice-sdk";
-import {
-  Dialog,
-  DialogClose,
-  DialogContent,
-  DialogTrigger,
-} from "../ui/dialog";
-import axios from "axios";
-import { useEffect, useState } from "react";
-
-// import {
-//   Dialog,
-//   DialogClose,
-//   DialogContent,
-//   DialogTrigger,
-// } from "../ui/dialog";
-//
+import { useState } from "react";
+import { Dialog, DialogContent, DialogTrigger } from "../ui/dialog";
+import CallControlDialog from "../specific/CallControlDialog";
+import { useMutation } from "@tanstack/react-query";
+import { getToken } from "@/apis/callAPI";
 
 const Header = ({ setsideBarOpen }) => {
-  // const [token, settoken] = useState("");
-  // const device = new Device(token);
-  // const makeCall = async () => {
-  //   let call = await device.connect({
-  //     params: {
-  //       To: "+918850701556",
-  //     },
-  //   });
-  //   console.log(call);
-  // };
-  useEffect(() => {
-    const getToken = async () => {
-      const res = await axios.post(
-        `https://balancenutrition-token-generation-4131.twil.io/generate-token`
-      );
-      settoken(res.data);
-    };
-    getToken();
-  }, []);
+  const [showCallDialog, setshowCallDialog] = useState(false);
+  const [token, setToken] = useState("");
+  const { mutate: getTokenMutate } = useMutation({
+    mutationFn: getToken,
+    onSuccess: (data) => {
+      try {
+        setToken(data.token);
+        setshowCallDialog(true);
+      } catch (error) {
+        console.error("Error initializing Twilio Device", error);
+      }
+    },
+  });
+  const getTokenHandler = () => {
+    getTokenMutate();
+  };
   return (
     <div
       className={`w-full bg-[#F5F7FF] py-1 flex justify-between items-center z-10`}
@@ -69,7 +47,6 @@ const Header = ({ setsideBarOpen }) => {
           className="cursor-pointer text-5xl text-[#0E0E0E] hover:bg-gray-300 hover:rounded-lg duration-300 p-2"
           onClick={() => setsideBarOpen((prev) => !prev)}
         />
-
         <div className="w-full relative">
           <Input
             className="border border-[#6C7383] px-1 py-4 focus-visible:ring-0 bg-[#F5F7FF] focus:bg-white duration-300"
@@ -81,27 +58,27 @@ const Header = ({ setsideBarOpen }) => {
           />
         </div>
       </div>
-
       <div className="pr-2 flex items-center gap-4">
-        {/* <Dialog>
+        <Dialog
+          open={showCallDialog}
+          onOpenChange={() => setshowCallDialog(false)}
+        >
           <DialogTrigger asChild>
-            <MdCall
-              size={25}
-              className="text-[#6C7383] cursor-pointer"
-              onClick={makeCall}
-            />
+            <div>
+              <MdCall
+                size={25}
+                className="text-[#6C7383] cursor-pointer"
+                onClick={getTokenHandler}
+              />
+            </div>
           </DialogTrigger>
           <DialogContent className="sm:max-w-[425px]">
-            <div className="w-[90%] flex justify-center items-center gap-3">
-              <DialogClose>
-                <MdCallEnd
-                  size={30}
-                  className="text-red-500 cursor-pointer hover:bg-gray-300 hover:text-red-700 "
-                />
-              </DialogClose>
-            </div>
+            <CallControlDialog
+              token={token}
+              setshowCallDialog={setshowCallDialog}
+            />
           </DialogContent>
-        </Dialog> */}
+        </Dialog>
         <Popover>
           <PopoverTrigger>
             <IoChatboxEllipsesOutline size={25} className="text-[#6C7383]" />

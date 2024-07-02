@@ -3,46 +3,79 @@ import { Sheet, SheetContent } from "../ui/sheet";
 
 
 import { sidebarLinks } from "@/constants/sidebarlinks";
-
+import { NavLink } from "react-router-dom";
 
 const MobileSidebar = ({ sideBarOpen, setsideBarOpen }) => {
   const location = useLocation();
+  const { pathname, hash } = location;
   return (
     <Sheet
-      open={!sideBarOpen}
+      open={sideBarOpen}
       onOpenChange={() => setsideBarOpen((prev) => !prev)}
     >
       <SheetContent
-        className="flex flex-col bg-[#0e0e0e] items-center w-[45%]  overflow-auto"
+        className="flex flex-col bg-[#4B49AC] items-center w-[45%]  overflow-auto"
         side={"left"}
       >
         <h1 className="text-left font-medium text-lg text-[#EEEEEE] border-b border-white">
           BALANCE NUTRITION
         </h1>
-        {sidebarLinks.map((item) => (
-          <Link
-            key={item.title}
-            to={item.href}
-            className={`w-[90%] flex items-center justify-between py-2 px-2  rounded-md ${
-              location.pathname === item.href ? "bg-[#EEEEEE]" : ""
-            }`}
-            onClick={() => setsideBarOpen((prev) => !prev)}
-          >
-            <item.icon
-              size={25}
-              color={location.pathname === item.href ? "black" : "gray"}
-            />
-            <p
-              className={`text-sm font-medium ${
-                location.pathname === item.href
-                  ? "text-black"
-                  : "text-[#EEEEEE]"
+        {sidebarLinks.map((item) => {
+          const isActive = pathname === item.href || hash === item.href;
+
+          return item.href.startsWith("#") ? (
+            <Link
+              key={item.title}
+              to={`/memberService/${item.href}`}
+              smooth
+              className={`w-[90%] flex ${
+                !sideBarOpen && "justify-center"
+              } items-center gap-2 py-2 px-2 rounded-md ${
+                isActive ? "bg-white" : ""
               }`}
             >
-              {item.title}
-            </p>
-          </Link>
-        ))}
+              <item.icon
+                size={23}
+                className={`${isActive ? "text-black" : "text-white"}`}
+              />
+
+              {sideBarOpen && (
+                <p
+                  className={`text-sm font-normal ${
+                    isActive ? "text-black" : "text-white"
+                  }`}
+                >
+                  {item.title}
+                </p>
+              )}
+            </Link>
+          ) : (
+            <NavLink
+              key={item.title}
+              to={item.href}
+              className={`w-[90%] flex ${
+                !sideBarOpen && "justify-center"
+              } items-center gap-2 py-2 px-2 rounded-md ${
+                isActive ? "bg-white" : ""
+              }`}
+            >
+              <item.icon
+                size={23}
+                className={`${isActive ? "text-black" : "text-white"}`}
+              />
+
+              {sideBarOpen && (
+                <p
+                  className={`text-sm font-normal ${
+                    isActive ? "text-black" : "text-white"
+                  }`}
+                >
+                  {item.title}
+                </p>
+              )}
+            </NavLink>
+          );
+        })}
       </SheetContent>
     </Sheet>
   );

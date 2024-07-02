@@ -99,7 +99,6 @@ const Home = () => {
   return (
     <div className="w-full px-2 overflow-auto transition-transform duration-500 ease-in-out">
       <Marquee
-        pauseOnHover={true}
         className="py-1.5 mt-2 bg-[#4B49AC] text-white font-semibold text-base rounded-md"
         id="top"
       >

@@ -3,17 +3,8 @@ import MobileSidebar from "@/components/common/MobileSidebar";
 import Sidebar from "@/components/common/Sidebar";
 
 import LiveUpdates from "@/components/specific/LiveUpdates";
-import { Button } from "@/components/ui/button";
-import {
-  Dialog,
-  DialogClose,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-} from "@/components/ui/dialog";
 import useIsMobile from "@/hooks/useIsMobile";
-import { DialogContent } from "@radix-ui/react-dialog";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 const AppLayout = (WrappedComponent) => {
   return () => {

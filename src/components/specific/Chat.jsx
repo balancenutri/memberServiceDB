@@ -13,8 +13,8 @@ const Chat = () => {
     }
   }, [messageData]);
   return (
-    <div className="w-full h-full bg-[#F5F7FA]  ">
-      <div className="w-full bg-[#4B49AC] py-1 gap-2 flex justify-start items-center">
+    <div className="w-full h-full bg-[#F5F7FA]">
+      <div className="w-full bg-[#379777] py-1 gap-2 flex justify-start items-center">
         <Avatar className="ml-2">
           <AvatarImage src="https://github.com/shadcn.png" />
           <AvatarFallback>CN</AvatarFallback>
@@ -33,6 +33,7 @@ const Chat = () => {
         <Input
           className="p-2 focus:outline-none focus:border-none border border-gray-400 w-4/5"
           placeholder="Enter Message"
+          spellcheck={true}
         />
         <IoMdSend size={20} color="black" />
       </div>

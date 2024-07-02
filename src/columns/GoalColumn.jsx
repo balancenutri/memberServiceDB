@@ -16,25 +16,25 @@ export const columns = [
     cell: ({ row }) => (
       <div className="w-full flex flex-col">
         <div className="w-full flex items-center gap-3">
-          <p className="text-sm font-light">Name:</p>
+          <p className="text-sm font-light text-gray-500">Name:</p>
           <p className="text-nowrap text-sm font-medium">
             {row.original.clientDetails.name}
           </p>
         </div>
         <div className="w-full flex items-center gap-3">
-          <p className="text-sm font-light">Email:</p>
+          <p className="text-sm font-light text-gray-500">Email:</p>
           <p className="text-nowrap text-sm font-medium">
             {row.original.clientDetails.email}
           </p>
         </div>
         <div className="w-full flex items-center gap-3">
-          <p className="text-sm font-light">Phone:</p>
+          <p className="text-sm font-light text-gray-500">Phone:</p>
           <p className="text-nowrap text-sm font-medium">
             {row.original.clientDetails.number}
           </p>
         </div>
         <div className="w-full flex items-center gap-3">
-          <p className="text-sm font-light">Status :</p>
+          <p className="text-sm font-light text-gray-500">Status :</p>
           <p
             className={`text-nowrap text-sm font-medium ${
               row.original.clientDetails.status === "Active"
@@ -46,7 +46,7 @@ export const columns = [
           </p>
         </div>
         <div className="w-full flex items-center gap-3">
-          <p className="text-sm font-light">Pg No:</p>
+          <p className="text-sm font-light text-gray-500">Pg No:</p>
           <p className="text-nowrap text-sm font-medium">
             {row.original.clientDetails.prog_no}
           </p>

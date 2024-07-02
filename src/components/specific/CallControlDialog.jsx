@@ -43,7 +43,7 @@ const CallControlDialog = ({ token, setshowCallDialog }) => {
         setStatus("ringing");
       });
 
-      currentCall.on("connect", () => {
+      currentCall.on("accept", () => {
         setStatus("In Progress");
         startTimer();
       });

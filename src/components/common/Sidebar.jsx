@@ -15,7 +15,11 @@ const Sidebar = ({ sideBarOpen }) => {
       }`}
     >
       <div className="w-full flex items-center justify-center lg:px-2">
-        <h2 className="text-xl text-[#4B49AC] text-left font-semibold w-[90%] mb-3">
+        <h2
+          className={`text-xl text-[#4B49AC] ${
+            !sideBarOpen ? "text-center" : "text-left"
+          } font-semibold w-[90%] mb-3`}
+        >
           {sideBarOpen ? "Balance Nutrition" : "BN"}
         </h2>
       </div>

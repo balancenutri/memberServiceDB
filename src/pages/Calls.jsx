@@ -13,7 +13,7 @@ const Calls = () => {
   });
 
   return (
-    <div className="w-full h-full px-2 py-3 overflow-auto transition-transform duration-500 ease-in-out space-y-3">
+    <div className="w-full h-full px-7 py-3 overflow-auto transition-transform duration-500 ease-in-out space-y-3">
       <h1 className="text-2xl font-medium ">All Calls</h1>
       <div className="w-full  flex justify-center">
         {isLoading ? (

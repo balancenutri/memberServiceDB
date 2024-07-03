@@ -48,10 +48,7 @@ const Header = ({ setsideBarOpen }) => {
           onClick={() => setsideBarOpen((prev) => !prev)}
         />
         <div className="w-full relative">
-          <Input
-            className="border border-[#6C7383] px-1 py-4 focus-visible:ring-0 bg-[#F5F7FF] focus:bg-white duration-300"
-            placeholder="Search Something"
-          />
+          <Input className="border border-[#6C7383] px-1 py-4 focus-visible:ring-0 bg-[#F5F7FF] focus:bg-white duration-300" />
           <CiSearch
             size={25}
             className="absolute right-1 top-1 text-[#6C7383] font-medium"

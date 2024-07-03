@@ -19,7 +19,7 @@ const Calls = () => {
         {isLoading ? (
           <Loader />
         ) : (
-          <div className="w-[90%]">
+          <div className="w-full">
             <DataTable data={data?.data?.calls} columns={columns} />
           </div>
         )}

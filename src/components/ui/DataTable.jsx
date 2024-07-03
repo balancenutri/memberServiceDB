@@ -22,7 +22,7 @@ export function DataTable({ columns, data }) {
 
   return (
     <div className="rounded-md border border-gray">
-      <Table>
+      <Table className="bg-white">
         <TableHeader className="bg-[#4B49AC] text-white">
           {table.getHeaderGroups().map((headerGroup) => (
             <TableRow key={headerGroup.id}>

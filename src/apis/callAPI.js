@@ -16,3 +16,8 @@ export const getCallStatusAPI = async (callSid) => {
   const data = res.data;
   return data;
 };
+export const getAllCalls = async () => {
+  const res = await axios.get(`${SERVER_URL}/api/call/get-calls`);
+  const data = res.data;
+  return data;
+};

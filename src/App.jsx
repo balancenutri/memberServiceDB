@@ -8,6 +8,7 @@ import {
 import Loader from "./components/ui/Loader";
 const PushNotifications = lazy(() => import("./pages/PushNotifications"));
 const Home = lazy(() => import("@/pages/Home"));
+const Call = lazy(() => import("@/pages/Calls"));
 
 const App = () => {
   return (
@@ -20,6 +21,7 @@ const App = () => {
             path="/memberService/pushNotification"
             element={<PushNotifications />}
           />
+          <Route path="/memberService/calls" element={<Call />} />
         </Routes>
       </Suspense>
     </Router>

@@ -5,6 +5,7 @@ import { FaClinicMedical } from "react-icons/fa";
 import { BiSpreadsheet } from "react-icons/bi";
 import { FaUser } from "react-icons/fa";
 import { MdOutlineNotificationsActive } from "react-icons/md";
+import { FiPhoneCall } from "react-icons/fi";
 
 export const sidebarLinks = [
   {
@@ -36,6 +37,11 @@ export const sidebarLinks = [
     icon: BiSpreadsheet,
     title: "Lead Status",
     href: "#bottom-page",
+  },
+  {
+    icon: FiPhoneCall,
+    title: "Calls",
+    href: "/memberService/calls",
   },
   // {
   //   icon: MdOutlineNotificationsActive,

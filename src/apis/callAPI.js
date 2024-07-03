@@ -2,7 +2,7 @@ import axios from "axios";
 const SERVER_URL = import.meta.env.VITE_SERVER_URL;
 
 export const getToken = async () => {
-  const res = await axios.post(`${SERVER_URL}/token`, {
+  const res = await axios.post(`${SERVER_URL}/api/call/token`, {
     identity: "Dashboard_User",
   });
   const data = res.data;
@@ -10,9 +10,9 @@ export const getToken = async () => {
 };
 
 export const getCallStatusAPI = async (callSid) => {
-  const res = await axios.post(`${SERVER_URL}/call-status`, {
-    callSid,
-  });
+  const res = await axios.get(
+    `${SERVER_URL}/api/call/call-status?callSid=${callSid}`
+  );
   const data = res.data;
   return data;
 };

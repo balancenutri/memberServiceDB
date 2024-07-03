@@ -4,6 +4,8 @@ import { IoCall } from "react-icons/io5";
 import { MdCallEnd } from "react-icons/md";
 import { TbPhoneCalling } from "react-icons/tb";
 import { Input } from "../ui/input";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
+import { getCallStatusAPI } from "@/apis/callAPI";
 
 const CallControlDialog = ({ token, setshowCallDialog }) => {
   const [toNumber, setToNumber] = useState("");
@@ -11,8 +13,16 @@ const CallControlDialog = ({ token, setshowCallDialog }) => {
   const [status, setStatus] = useState("");
   const [callDuration, setCallDuration] = useState("00:00");
   const [timer, setTimer] = useState(null);
+  const queryClient = useQueryClient();
 
   const device = new Device(token);
+
+  const { data, isLoading, refetch } = useQuery({
+    queryKey: ["status", currentCall?.parameters?.CallSid],
+    queryFn: () => getCallStatusAPI(currentCall?.parameters?.CallSid),
+    enabled: !!currentCall,
+    refetchInterval: 3000, // Fetch every 3 seconds
+  });
 
   const handleCall = async () => {
     try {
@@ -20,7 +30,7 @@ const CallControlDialog = ({ token, setshowCallDialog }) => {
         const call = await device.connect({
           params: { To: `+91${toNumber}` },
         });
-        console.log("Call initiated:", call);
+
         setCurrentCall(call);
         setStatus("Connecting...");
       }
@@ -36,25 +46,6 @@ const CallControlDialog = ({ token, setshowCallDialog }) => {
     }
     setshowCallDialog(false);
   };
-
-  useEffect(() => {
-    if (currentCall) {
-      currentCall.on("ringing", () => {
-        setStatus("ringing");
-      });
-
-      currentCall.on("accept", () => {
-        setStatus("In Progress");
-        startTimer();
-      });
-
-      currentCall.on("disconnect", () => {
-        setStatus("Call Ended");
-        clearInterval(timer); // Stop the timer when call ends
-        setshowCallDialog(false);
-      });
-    }
-  }, [currentCall]);
 
   const startTimer = () => {
     let seconds = 0;
@@ -72,6 +63,30 @@ const CallControlDialog = ({ token, setshowCallDialog }) => {
     );
   };
 
+  useEffect(() => {
+    if (currentCall) {
+      currentCall.on("ringing", () => {
+        setStatus("Ringing");
+      });
+      currentCall.on("accept", () => {
+        setStatus("In Progress");
+        startTimer();
+      });
+      currentCall.on("disconnect", () => {
+        setStatus("Call Ended");
+        clearInterval(timer);
+        setshowCallDialog(false);
+      });
+    }
+
+    return () => {
+      queryClient.invalidateQueries([
+        "status",
+        currentCall?.parameters?.CallSid,
+      ]);
+    };
+  }, [currentCall]);
+
   return (
     <div className="w-full h-full flex flex-col items-center space-y-4">
       <h1>{toNumber}</h1>
@@ -82,7 +97,7 @@ const CallControlDialog = ({ token, setshowCallDialog }) => {
           onChange={(e) => setToNumber(e.target.value)}
         />
       )}
-      {status && currentCall && <p>{status}</p>}
+      {status && <p>{status}</p>}
       {status === "In Progress" && <p>{callDuration}</p>}
       <div className="w-full flex justify-center space-x-5">
         {!status ? (

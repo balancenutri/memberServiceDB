@@ -3,13 +3,6 @@ import { FaWhatsapp } from "react-icons/fa6";
 
 
 export const columns = [
-  // {
-  //   accessorKey: "index",
-  //   header: "Sl No.",
-  //   cell: ({ row }) => (
-  //     <div className="text-sm font-medium">{row.index + 1}</div>
-  //   ),
-  // },
   {
     accessorKey: "Client Details",
     header: "Client Details",

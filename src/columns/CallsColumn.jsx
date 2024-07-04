@@ -1,12 +1,18 @@
-import { Dialog, DialogTrigger } from "@/components/ui/dialog";
-import { IoMdEye } from "react-icons/io";
-
 export const columns = [
   {
     accessorKey: "index",
     header: "Sl No.",
     cell: ({ row }) => (
       <div className="text-sm font-medium">{row.index + 1}</div>
+    ),
+  },
+  {
+    accessorKey: "to",
+    header: "To (Phone Number)",
+    cell: ({ row }) => (
+      <div className="text-sm font-medium">
+        {row.original.to ? row.original.to : "No Phone Number Found"}
+      </div>
     ),
   },
   {
@@ -43,7 +49,11 @@ export const columns = [
     cell: ({ row }) => {
       return (
         <div className="w-full flex justify-center items-center">
-          <p>{row.original.calltranscription}</p>
+          <p>
+            {row.original.calltranscription
+              ? row.original.calltranscription
+              : "No Transcription Found"}
+          </p>
         </div>
       );
     },

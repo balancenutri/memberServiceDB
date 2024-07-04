@@ -17,12 +17,12 @@ const CallControlDialog = ({ token, setshowCallDialog }) => {
 
   const device = new Device(token);
 
-  const { data, isLoading, refetch } = useQuery({
-    queryKey: ["status", currentCall?.parameters?.CallSid],
-    queryFn: () => getCallStatusAPI(currentCall?.parameters?.CallSid),
-    enabled: !!currentCall,
-    refetchInterval: 3000, // Fetch every 3 seconds
-  });
+  // const { data, isLoading, refetch } = useQuery({
+  //   queryKey: ["status", currentCall?.parameters?.CallSid],
+  //   queryFn: () => getCallStatusAPI(currentCall?.parameters?.CallSid),
+  //   enabled: !!currentCall,
+  //   refetchInterval: 3000, // Fetch every 3 seconds
+  // });
 
   const handleCall = async () => {
     try {

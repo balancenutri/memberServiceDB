@@ -8,15 +8,12 @@ const Sidebar = ({ sideBarOpen }) => {
 
   return (
     <aside
-      className={`md:block hidden h-full overflow-auto px-2 py-4 bg-[#FFFFFF] transition-all duration-300 ease-in-out space-y-4 ${
-        sideBarOpen
-          ? " md:w-[15%] lg:w-[17%]"
-          : " md:w-[6%] lg:w-[6%] xl:w-[6%]"
-      }`}
+      data-collapse={sideBarOpen}
+      className={`md:block hidden h-full overflow-auto px-2 py-4 bg-[#FFFFFF] transition-all duration-300 ease-in-out space-y-4 data-[collapse=true]:w-60 w-16`}
     >
       <div className="w-full flex items-center justify-center lg:px-2">
         <h2
-          className={`text-xl text-[#4B49AC] ${
+          className={`text-xl text-nowrap text-[#4B49AC] ${
             !sideBarOpen ? "text-center" : "text-left"
           } font-semibold w-[90%] mb-3`}
         >
@@ -32,8 +29,8 @@ const Sidebar = ({ sideBarOpen }) => {
               key={item.title}
               to={`/memberService/${item.href}`}
               smooth
-              className={`w-[90%] flex ${
-                !sideBarOpen && "justify-center"
+              className={`w-full flex flex-nowrap text-nowrap ${
+                !sideBarOpen ? "justify-center" : "justify-start"
               } items-center gap-2 py-2 px-2 rounded-md ${
                 isActive ? "bg-[#4B49AC]" : ""
               }`}
@@ -45,7 +42,7 @@ const Sidebar = ({ sideBarOpen }) => {
 
               {sideBarOpen && (
                 <p
-                  className={`text-sm font-normal hidden md:block ${
+                  className={`text-sm font-normal te hidden md:block ${
                     isActive ? "text-white" : "text-[#6C7383]"
                   }`}
                 >
@@ -57,10 +54,10 @@ const Sidebar = ({ sideBarOpen }) => {
             <NavLink
               key={item.title}
               to={item.href}
-              className={`w-[90%] flex ${
-                !sideBarOpen && "justify-center"
+              className={`w-full flex ${
+                !sideBarOpen ? "justify-center" : "justify-start"
               } items-center gap-2 py-2 px-2 rounded-md ${
-                isActive ? "bg-[#4B49AC]" : ""
+                isActive ? "bg-[#4B49AC] " : ""
               }`}
             >
               <item.icon

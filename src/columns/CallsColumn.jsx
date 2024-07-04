@@ -1,3 +1,6 @@
+import { Dialog, DialogTrigger } from "@/components/ui/dialog";
+import { IoMdEye } from "react-icons/io";
+
 export const columns = [
   {
     accessorKey: "index",
@@ -30,6 +33,17 @@ export const columns = [
           }`}
         >
           {row.original.callStatus}
+        </div>
+      );
+    },
+  },
+  {
+    accessorKey: "calltranscription",
+    header: "Call Transcription ",
+    cell: ({ row }) => {
+      return (
+        <div className="w-full flex justify-center items-center">
+          <p>{row.original.calltranscription}</p>
         </div>
       );
     },

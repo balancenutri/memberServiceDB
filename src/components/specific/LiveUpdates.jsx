@@ -1,6 +1,6 @@
 import { liveUpdates } from "@/constants/dummydata";
-import { useState, useEffect, useRef } from "react";
-import { IoClose, IoNotifications } from "react-icons/io5";
+import { useEffect, useRef, useState } from "react";
+import { IoClose } from "react-icons/io5";
 import { Card, CardContent } from "../ui/card";
 import {
   Drawer,
@@ -8,7 +8,6 @@ import {
   DrawerContent,
   DrawerHeader,
   DrawerTitle,
-  DrawerTrigger,
 } from "../ui/drawer";
 
 const LiveUpdates = ({ setOpenDrawer, openDrawer }) => {
@@ -31,10 +30,10 @@ const LiveUpdates = ({ setOpenDrawer, openDrawer }) => {
   }, [liveUpdates]);
 
   useEffect(() => {
-    if (latestUpdateRef.current) {
+      if (latestUpdateRef.current) {
       latestUpdateRef.current.scrollIntoView({ behavior: "smooth" });
     }
-  }, [openDrawer]);
+  }, [openDrawer, latestUpdateIndex]);
 
   const formatTime = (time) => {
     const date = new Date(time);

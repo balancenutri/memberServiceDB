@@ -11,10 +11,9 @@ import {
   DrawerTrigger,
 } from "../ui/drawer";
 
-const LiveUpdates = () => {
+const LiveUpdates = ({ setOpenDrawer, openDrawer }) => {
   const [latestUpdateIndex, setLatestUpdateIndex] = useState(null);
   const latestUpdateRef = useRef(null);
-  const [openDrawer, setOpenDrawer] = useState(false);
 
   useEffect(() => {
     if (liveUpdates.length > 0) {
@@ -46,17 +45,12 @@ const LiveUpdates = () => {
 
   return (
     <Drawer
+      open={openDrawer}
       onOpenChange={(value) => {
         setOpenDrawer(value);
       }}
       className="w-full focus:ring-0 focus:outline-none"
     >
-      <DrawerTrigger className="w-full">
-        <div className="bg-[#379777] py-1 w-full rounded-full flex items-center justify-center">
-          <IoNotifications size={23} className="text-white" />
-          <p className="text-sm text-white">({liveUpdates.length})</p>
-        </div>
-      </DrawerTrigger>
       <DrawerContent className="w-[75%] md:w-[20%] h-full right-3 p-0 mt-0 bg-[#EEEEEE]">
         <DrawerHeader className="w-full bg-[#379777] rounded-t-[10px] text-white flex items-center justify-between">
           <DrawerTitle className="text-sm font-medium">

@@ -1,6 +1,7 @@
 import { liveUpdates } from "@/constants/dummydata";
 import { useEffect, useRef, useState } from "react";
 import { IoClose } from "react-icons/io5";
+import { MdUpdate } from "react-icons/md";
 import { Card, CardContent } from "../ui/card";
 import {
   Drawer,
@@ -30,7 +31,7 @@ const LiveUpdates = ({ setOpenDrawer, openDrawer }) => {
   }, [liveUpdates]);
 
   useEffect(() => {
-      if (latestUpdateRef.current) {
+    if (latestUpdateRef.current) {
       latestUpdateRef.current.scrollIntoView({ behavior: "smooth" });
     }
   }, [openDrawer, latestUpdateIndex]);
@@ -50,48 +51,66 @@ const LiveUpdates = ({ setOpenDrawer, openDrawer }) => {
       }}
       className="w-full focus:ring-0 focus:outline-none"
     >
-      <DrawerContent className="w-[75%] md:w-[20%] h-full right-3 p-0 mt-0 bg-[#EEEEEE]">
-        <DrawerHeader className="w-full bg-[#379777] rounded-t-[10px] text-white flex items-center justify-between">
-          <DrawerTitle className="text-sm font-medium">
+      <DrawerContent className="w-[75%] md:w-[20%] h-full right-3 p-0 mt-0 bg-white">
+        <DrawerHeader className="w-full  rounded-t-lg border-b  text-zinc-800 relative flex items-center justify-center px-4 py-2 shadow-md">
+          <DrawerTitle className="text-base text-center font-medium ">
             Live Updates
           </DrawerTitle>
-          <DrawerClose className="text-sm font-medium">
-            <IoClose size={20} className="text-white" />
+          <DrawerClose className="text-gray-300 hover:text-gray-500 absolute top-1.5 right-2">
+            <IoClose size={20} />
           </DrawerClose>
         </DrawerHeader>
-        <div className="w-full overflow-auto h-screen flex flex-col items-center space-y-8 py-1">
-          <div className="w-full flex justify-end px-1 duration-300">
-            <p className="text-[#373A40] text-xs hover:scale-105 underline rounded-md cursor-pointer">
+        <div className="w-full overflow-auto h-screen flex flex-col items-center py-4 px-2 bg-gray-50">
+          <div className="w-full flex justify-end mb-2">
+            <p className="text-gray-600 text-xs hover:text-gray-800 cursor-pointer underline">
               Clear All
             </p>
           </div>
-          {[...liveUpdates].reverse().map((update, index) => {
-            const reversedIndex = liveUpdates.length - 1 - index;
-            return (
-              <Card
-                key={reversedIndex}
-                className="w-[90%] pt-4 px-2 pb-2 cursor-pointer relative bg-yellow-200 border border-yellow-300 rounded-md shadow-sm"
-                ref={index === liveUpdates.length - 1 ? latestUpdateRef : null}
-              >
-                {reversedIndex === latestUpdateIndex && (
-                  <div className="absolute -top-1 -left-1 w-2 h-2 bg-red-500 rounded-full"></div>
-                )}
+          <div className="w-full relative flex flex-col items-center space-y-8">
+            {[...liveUpdates].reverse().map((update, index) => {
+              const reversedIndex = liveUpdates.length - 1 - index;
+              const isLatest = reversedIndex === latestUpdateIndex;
 
-                <CardContent className="w-full flex flex-col justify-center items-center">
-                  <IoClose
-                    size={15}
-                    className={`absolute -right-1.5 -top-1.5`}
-                  />
-                  <p className="text-center text-sm font-medium transition-all duration-200">
-                    {update.message}
-                  </p>
-                  <p className="text-xs text-right font-medium w-full text-gray-600">
-                    {formatTime(update.time)}
-                  </p>
-                </CardContent>
-              </Card>
-            );
-          })}
+              const [updateType, updateMessage] = update.message.split(":");
+
+              return (
+                <div
+                  key={reversedIndex}
+                  className="relative w-full max-w-xs flex justify-center items-center"
+                  ref={isLatest ? latestUpdateRef : null}
+                >
+                  <Card className="w-full p-2  rounded-lg relative shadow-zinc-200 border-none">
+                    <div className="w-fit px-2 py-1 absolute -top-3 left-2 bg-[#4B49AC]/10 text-[#4B49AC] text-sm font-med rounded-md">
+                      {updateType}
+                      {isLatest && (
+                        <div className="absolute -top-2.5 -right-2 transform -translate-x-1/2 w-2 h-2  rounded-full ">
+                          <div class="inline-block relative">
+                            <span class="animate-ping  block h-1 w-1 rounded-full ring-2 ring-green-400 bg-green-600"></span>
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                    <CardContent className="flex flex-col items-start space-y-2 ">
+                      <IoClose
+                        size={16}
+                        className="text-gray-500 cursor-pointer ml-auto"
+                      />
+
+                      <p className="text-sm text-gray-800">
+                        {updateMessage.trim()}
+                      </p>
+                      <div className="flex gap-0.5">
+                        <MdUpdate className="text-[#4B49AC]" size={15} />
+                        <p className="text-xs text-gray-600">
+                          {formatTime(update.time)}
+                        </p>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </div>
+              );
+            })}
+          </div>
         </div>
       </DrawerContent>
     </Drawer>

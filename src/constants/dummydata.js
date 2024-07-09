@@ -351,7 +351,7 @@ export const messageData = [
     client: false,
   },
 ];
-const getTimeAgo = (minutesAgo) => {
+export const getTimeAgo = (minutesAgo) => {
   const currentTime = new Date();
   currentTime.setMinutes(currentTime.getMinutes() - minutesAgo);
   return currentTime;
